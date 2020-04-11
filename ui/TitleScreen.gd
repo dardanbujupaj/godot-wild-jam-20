@@ -9,6 +9,7 @@ func _ready():
 
 
 func _on_NewGame_pressed():
+	get_tree().change_scene("res://scenes/Game.tscn")
 	pass # Replace with function body.
 
 
