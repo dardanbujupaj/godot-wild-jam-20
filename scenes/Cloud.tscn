@@ -46,6 +46,7 @@ shape = SubResource( 1 )
 emitting = false
 amount = 16
 lifetime = 3.0
+visibility_rect = Rect2( -100, -100, 200, 1000 )
 local_coords = false
 process_material = SubResource( 2 )
 
@@ -53,6 +54,7 @@ process_material = SubResource( 2 )
 emitting = false
 amount = 128
 lifetime = 3.0
+visibility_rect = Rect2( -100, -100, 200, 1000 )
 local_coords = false
 process_material = SubResource( 2 )
 

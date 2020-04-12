@@ -1,10 +1,19 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/Dandelion.gd" type="Script" id=1]
 [ext_resource path="res://scenes/dandelion.png" type="Texture" id=2]
+[ext_resource path="res://scenes/dandelion_white_animation.png" type="Texture" id=3]
 [ext_resource path="res://scenes/rainometer_over.png" type="Texture" id=4]
 [ext_resource path="res://scenes/rainometer_progress.png" type="Texture" id=5]
 [ext_resource path="res://scenes/rainometer_under.png" type="Texture" id=6]
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 64, 96 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 96, 64, 96 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
@@ -50,6 +59,10 @@ region = Rect2( 64, 0, 64, 85 )
 atlas = ExtResource( 2 )
 region = Rect2( 128, 0, 64, 85 )
 
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 192, 64, 96 )
+
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 64, 85 )
@@ -60,6 +73,11 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 23 ) ],
+"loop": true,
+"name": "age_5_wind_left",
+"speed": 4.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
@@ -86,10 +104,10 @@ animations = [ {
 "name": "age_1",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 22 ), SubResource( 24 ) ],
 "loop": true,
 "name": "age_5",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [ SubResource( 13 ) ],
 "loop": true,
@@ -121,7 +139,7 @@ expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 79.5089
+radius = 60.2652
 
 [node name="Dandelion" type="Area2D"]
 script = ExtResource( 1 )
@@ -133,8 +151,7 @@ cast_to = Vector2( 0, -1000 )
 [node name="dandelion" type="AnimatedSprite" parent="."]
 position = Vector2( 0.826782, -14.9803 )
 frames = SubResource( 14 )
-animation = "fast"
-frame = 1
+animation = "age_5_wind_left"
 playing = true
 
 [node name="Sunometer" type="ProgressBar" parent="."]
@@ -172,5 +189,5 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.475006, -26.125 )
+position = Vector2( 0.475006, -16.625 )
 shape = SubResource( 3 )

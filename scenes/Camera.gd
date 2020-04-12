@@ -18,8 +18,8 @@ func zoom_to(node):
 	if current_node != null:
 		current_node.active = false
 	
-	$Tween.interpolate_property(self, "position", position, node.position, 1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	$Tween.interpolate_property(self, "zoom", zoom, Vector2(0.5, 0.5), 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(self, "position", position, node.position, 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(self, "zoom", zoom, Vector2(0.25, 0.25), 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	$Tween.start()
 	current_node = node
 	node.active = true
@@ -29,8 +29,8 @@ func zoom_out():
 		current_node.active = false
 	
 	
-	$Tween.interpolate_property(self, "position", position, home_position, 1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	$Tween.interpolate_property(self, "zoom", zoom, Vector2(1, 1), 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(self, "position", position, home_position, 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(self, "zoom", zoom, Vector2(.5, .5), 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	$Tween.start()
 	
 	current_node = null

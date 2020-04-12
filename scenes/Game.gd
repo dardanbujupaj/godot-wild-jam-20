@@ -8,8 +8,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var start_dandelion = add_dandelion(Vector2(360, 680))
-	add_dandelion(Vector2(500, 680))
+	var start_dandelion = add_dandelion(Vector2(0, 0))
+	add_dandelion(Vector2(200, 0))
 
 func _input(event):
 	if Input.is_action_just_pressed("exit"):
@@ -18,7 +18,7 @@ func _input(event):
 
 
 func _popup_overlay_menu():
-	$OverlayMenu.popup_centered()
+	$UI/OverlayMenu.popup_centered()
 
 
 
