@@ -12,36 +12,48 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 135.0
-margin_bottom = 90.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 141.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 131.0
 margin_bottom = 14.0
-text = "godot wild jam 20"
+text = "godot wild jam #20"
 
-[node name="Resume" type="Button" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 4.0
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 131.0
 margin_bottom = 38.0
 text = "resume"
 
-[node name="Title" type="Button" parent="VBoxContainer"]
+[node name="Title" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 42.0
 margin_right = 131.0
 margin_bottom = 62.0
 text = "back to titlescreen"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 66.0
 margin_right = 131.0
 margin_bottom = 86.0
 text = "quit"
 [connection signal="about_to_show" from="." to="." method="_on_OverlayMenu_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_OverlayMenu_popup_hide"]
-[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="pressed" from="VBoxContainer/Title" to="." method="_on_Title_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Title" to="." method="_on_Title_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
