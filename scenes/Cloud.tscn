@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Cloud.gd" type="Script" id=1]
+[ext_resource path="res://scenes/cloud_furious.png" type="Texture" id=2]
+[ext_resource path="res://scenes/cloud_happy.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64.2684, 33.0911 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 2
+emission_box_extents = Vector3( 50, 0, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+color = Color( 0.866667, 0.866667, 0.866667, 1 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "happy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "furious",
+"speed": 5.0
+} ]
+
+[node name="Cloud" type="KinematicBody2D"]
+input_pickable = true
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="ParticlesMild" type="Particles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 3.0
+local_coords = false
+process_material = SubResource( 2 )
+
+[node name="ParticlesStrong" type="Particles2D" parent="."]
+emitting = false
+amount = 128
+lifetime = 3.0
+local_coords = false
+process_material = SubResource( 2 )
+
+[node name="cloud" type="AnimatedSprite" parent="."]
+position = Vector2( 0.451874, -19.8823 )
+frames = SubResource( 3 )
+animation = "happy"
+[connection signal="input_event" from="." to="." method="_on_Cloud_input_event"]

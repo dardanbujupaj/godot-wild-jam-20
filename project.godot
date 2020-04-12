@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Cloud",
+"language": "GDScript",
+"path": "res://scenes/Cloud.gd"
+} ]
 _global_script_class_icons={
-
+"Cloud": ""
 }
 
 [application]
@@ -20,6 +25,29 @@ run/main_scene="res://ui/TitleScreen.tscn"
 boot_splash/image="res://assets/wildjam_wallpaper.png"
 boot_splash/bg_color=Color( 0.0509804, 0.117647, 0.160784, 1 )
 config/icon="res://assets/icon.png"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [input]
 
@@ -42,5 +70,5 @@ click={
 
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0, 0.458824, 0.752941, 1 )
+environment/default_clear_color=Color( 0.0196078, 0.517647, 0.917647, 1 )
 environment/default_environment="res://default_env.tres"
