@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud_furious.png-0d3c388e7941cb35ba139adcedb931fe.stex"
+path="res://.import/rainometer_progress.png-d7f5a487dd22febb360bc0a37d5a31f1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/cloud_furious.png"
-dest_files=[ "res://.import/cloud_furious.png-0d3c388e7941cb35ba139adcedb931fe.stex" ]
+source_file="res://scenes/dandelion/rainometer_progress.png"
+dest_files=[ "res://.import/rainometer_progress.png-d7f5a487dd22febb360bc0a37d5a31f1.stex" ]
 
 [params]
 

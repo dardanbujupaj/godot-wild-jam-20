@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud.png-d430ce45b0281423fbb5c6fc14282ca8.stex"
+path="res://.import/cloud_happy.png-1694bbdc1aa1d4faf99a1ca449a43f44.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/cloud.png"
-dest_files=[ "res://.import/cloud.png-d430ce45b0281423fbb5c6fc14282ca8.stex" ]
+source_file="res://scenes/cloud/cloud_happy.png"
+dest_files=[ "res://.import/cloud_happy.png-1694bbdc1aa1d4faf99a1ca449a43f44.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

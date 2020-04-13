@@ -1,70 +1,70 @@
 [gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://scenes/Dandelion.gd" type="Script" id=1]
-[ext_resource path="res://scenes/dandelion.png" type="Texture" id=2]
-[ext_resource path="res://scenes/dandelion_white_animation.png" type="Texture" id=3]
-[ext_resource path="res://scenes/rainometer_over.png" type="Texture" id=4]
-[ext_resource path="res://scenes/rainometer_progress.png" type="Texture" id=5]
-[ext_resource path="res://scenes/rainometer_under.png" type="Texture" id=6]
+[ext_resource path="res://scenes/dandelion/Dandelion.gd" type="Script" id=1]
+[ext_resource path="res://scenes/dandelion/rainometer_progress.png" type="Texture" id=2]
+[ext_resource path="res://scenes/dandelion/rainometer_over.png" type="Texture" id=3]
+[ext_resource path="res://scenes/dandelion/rainometer_under.png" type="Texture" id=4]
+[ext_resource path="res://scenes/dandelion/dandelion.png" type="Texture" id=5]
+[ext_resource path="res://scenes/dandelion/dandelion_white_animation.png" type="Texture" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 64, 96 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 96, 64, 96 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 85, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 192, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 384, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 320, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 256, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 192, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 128, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 128, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 192, 64, 96 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 64, 85 )
 
 [sub_resource type="SpriteFrames" id=16]
@@ -181,9 +181,9 @@ margin_top = -64.125
 margin_right = 67.625
 margin_bottom = -0.125031
 value = 30.0
-texture_under = ExtResource( 6 )
-texture_over = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
 fill_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false

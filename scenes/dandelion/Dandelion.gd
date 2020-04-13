@@ -53,6 +53,6 @@ func _process(delta):
 
 
 func release_seed():
-	var seed_node = preload("res://scenes/Seed.tscn").instance()
+	var seed_node = preload("res://scenes/seed/Seed.tscn").instance()
 	seed_node.position = position + Vector2(0, -60)
 	get_parent().add_child(seed_node)

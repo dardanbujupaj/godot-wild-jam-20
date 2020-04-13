@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Cloud",
 "language": "GDScript",
-"path": "res://scenes/Cloud.gd"
+"path": "res://scenes/cloud/Cloud.gd"
 }, {
 "base": "Area2D",
 "class": "Dandelion",
 "language": "GDScript",
-"path": "res://scenes/Dandelion.gd"
+"path": "res://scenes/dandelion/Dandelion.gd"
 } ]
 _global_script_class_icons={
 "Cloud": "",

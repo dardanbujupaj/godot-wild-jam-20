@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rainometer_under.png-83d51b9168024f40d56ebcec52eacc08.stex"
+path="res://.import/stem.png-52d1b186e8b8d7ffabd78365057caa9b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/rainometer_under.png"
-dest_files=[ "res://.import/rainometer_under.png-83d51b9168024f40d56ebcec52eacc08.stex" ]
+source_file="res://scenes/dandelion/stem.png"
+dest_files=[ "res://.import/stem.png-52d1b186e8b8d7ffabd78365057caa9b.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rainometer_over.png-e77c09071dec96ab5aed3edbfa5f9a0e.stex"
+path="res://.import/dandelion_white_animation.png-d34a473a242e1b3d1f2bbc717c0ff21c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/rainometer_over.png"
-dest_files=[ "res://.import/rainometer_over.png-e77c09071dec96ab5aed3edbfa5f9a0e.stex" ]
+source_file="res://scenes/dandelion/dandelion_white_animation.png"
+dest_files=[ "res://.import/dandelion_white_animation.png-d34a473a242e1b3d1f2bbc717c0ff21c.stex" ]
 
 [params]
 

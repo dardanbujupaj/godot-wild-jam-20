@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dog_1.png-ef3611da32cd53fd2c4600ffe8180437.stex"
+path="res://.import/rainometer_under.png-a2df1332aa3fb14cc3c103d68fba9c5b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/dog_1.png"
-dest_files=[ "res://.import/dog_1.png-ef3611da32cd53fd2c4600ffe8180437.stex" ]
+source_file="res://scenes/dandelion/rainometer_under.png"
+dest_files=[ "res://.import/rainometer_under.png-a2df1332aa3fb14cc3c103d68fba9c5b.stex" ]
 
 [params]
 

@@ -1,12 +1,13 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://scenes/Cloud.gd" type="Script" id=1]
-[ext_resource path="res://scenes/cloud_furious.png" type="Texture" id=2]
-[ext_resource path="res://scenes/cloud_happy.png" type="Texture" id=3]
-[ext_resource path="res://scenes/cat_2.png" type="Texture" id=4]
-[ext_resource path="res://scenes/dog_1.png" type="Texture" id=5]
-[ext_resource path="res://scenes/cat_1.png" type="Texture" id=6]
-[ext_resource path="res://scenes/drop.png" type="Texture" id=7]
+[ext_resource path="res://scenes/cloud/Cloud.gd" type="Script" id=1]
+[ext_resource path="res://scenes/cloud/cloud_furious.png" type="Texture" id=2]
+[ext_resource path="res://scenes/cloud/cloud_happy.png" type="Texture" id=3]
+[ext_resource path="res://scenes/cloud/cat_2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/cloud/dog_1.png" type="Texture" id=5]
+[ext_resource path="res://scenes/cloud/cat_1.png" type="Texture" id=6]
+[ext_resource path="res://scenes/cloud/drop.png" type="Texture" id=7]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.2684, 33.0911 )
