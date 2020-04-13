@@ -15,6 +15,8 @@ var age = 0
 
 var size = 1
 
+var blow_left = false
+var blow_right = false
 
 
 var active = false setget set_active
@@ -95,7 +97,13 @@ func _process(delta):
 		next_age_countdown = max_age / 4
 		
 		if age < 4:
-			$flower.play("age_" + str(age))
+			var animation = "age_" + str(age)
+			if blow_left:
+				animation += "_left"
+			elif blow_right:
+				animation += "_right"
+				
+			$flower.play(animation)
 		else:
 			for i in range(round(size / 20)):
 				release_seed()
@@ -107,3 +115,20 @@ func release_seed():
 	seed_node.position = position + Vector2(0, -60)
 	get_parent().add_child(seed_node)
 
+
+func blow_left():
+	$flower.play("age_" + str(age) + "_left")
+	
+	blow_left = true
+	
+
+func blow_right():
+	$flower.play("age_" + str(age) + "_right")
+	
+	blow_right = true
+
+
+func stop_blowing():
+	$flower.play("age_" + str(age))
+	blow_left = false
+	blow_right = false

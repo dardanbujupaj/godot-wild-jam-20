@@ -69,9 +69,24 @@ func _on_OverlayMenu_popup_hide():
 
 
 func _on_WindRight_pressed():
-	$Cloud.velocity = Vector2(1, 0)
+	pass# $Cloud.velocity = Vector2(1, 0)
 
 
 func _on_WindLeft_pressed():
-	$Cloud.velocity = Vector2(-1, 0)
+	pass# $Cloud.velocity = Vector2(-1, 0)
 
+
+
+
+func _on_WindRight_button_down():
+	$Cloud.accelerate_right()
+	get_tree().call_group("dandelions", "blow_right")
+	
+func _on_WindLeft_button_down():
+	$Cloud.accelerate_left()
+	get_tree().call_group("dandelions", "blow_left")
+
+
+func _on_Wind_button_up():
+	get_tree().call_group("dandelions", "stop_blowing")
+	$Cloud.stop_accelerating()

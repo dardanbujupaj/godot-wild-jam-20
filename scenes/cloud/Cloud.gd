@@ -3,7 +3,9 @@ extends KinematicBody2D
 class_name Cloud
 
 
-const SPEED = 200
+const MAX_SPEED = 100
+
+var acceleration = Vector2()
 
 var velocity = Vector2()
 
@@ -59,21 +61,19 @@ func _ready():
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-
 func _physics_process(delta):
-	position += velocity * delta * SPEED
+	if acceleration.length() > 0:
+		velocity = acceleration * MAX_SPEED
+	else:
+		velocity *= .97
+		
+	position += velocity * delta
 	
-	velocity *= .99
 	
 
 func _on_Cloud_input_event(viewport, event, shape_idx):
-	if Input.is_action_just_pressed("click"):
-		print("cloud clicked")
+	if Input.is_action_just_pressed("click") and event is InputEventMouseButton:
+
 		if anger < 5:
 			anger += 1
 		
@@ -85,16 +85,11 @@ func _on_Cloud_input_event(viewport, event, shape_idx):
 			if rain_levels[rain_phase]["increase"] != null:
 				change_rain_level(rain_levels[rain_phase]["increase"])
 			
-			
-		
-			
-		
-		
-		
 
 
 
 
+# activate and deactivate correct particles
 func change_rain_level(to):
 	for particle in rain_levels[rain_phase]["particles"]:
 		
@@ -112,6 +107,21 @@ func get_rain_amount():
 	return rain_levels[rain_phase]["amount"]
 
 
+
+
+# accelerate cloud when wind is blowing (called from Game.gd)
+func accelerate_right():
+	acceleration = Vector2(1, 0)
+	
+func accelerate_left():
+	acceleration = Vector2(-1, 0)
+	
+func stop_accelerating():
+	acceleration = Vector2(0, 0)
+
+
+
+
 func _on_RainTimer_timeout():
 	if rain_levels[rain_phase]["decrease"] != null:
 		change_rain_level(rain_levels[rain_phase]["decrease"])
@@ -126,3 +136,5 @@ func _on_AngerTimer_timeout():
 	$cloud.animation = str(anger)
 	
 	$AngerTimer.start(rand_range(4, 10))
+
+
