@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Cloud",
 "language": "GDScript",
 "path": "res://scenes/Cloud.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Dandelion",
+"language": "GDScript",
+"path": "res://scenes/Dandelion.gd"
 } ]
 _global_script_class_icons={
-"Cloud": ""
+"Cloud": "",
+"Dandelion": ""
 }
 
 [application]

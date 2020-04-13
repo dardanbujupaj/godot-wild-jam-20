@@ -15,7 +15,9 @@ func _ready():
 var current_node = null
 
 func zoom_to(node):
-	if current_node != null:
+	# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
+	var wr = weakref(current_node)
+	if wr.get_ref():
 		current_node.active = false
 	
 	$Tween.interpolate_property(self, "position", position, node.position, 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
@@ -25,7 +27,9 @@ func zoom_to(node):
 	node.active = true
 	
 func zoom_out():
-	if current_node != null:
+	# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
+	var wr = weakref(current_node)
+	if wr.get_ref():
 		current_node.active = false
 	
 	
