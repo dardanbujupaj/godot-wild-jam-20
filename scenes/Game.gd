@@ -33,6 +33,14 @@ func _unhandled_input(event):
 func _process(delta):
 	# update selection helper
 	selection_helper.position = get_global_mouse_position()
+	
+	if Input.is_action_pressed("ui_left"):
+		$Camera.position.x -= 1
+	if Input.is_action_pressed("ui_right"):
+		$Camera.position.x += 1
+		
+		
+	
 
 
 # open the overlay menu
