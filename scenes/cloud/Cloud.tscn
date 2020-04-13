@@ -8,7 +8,6 @@
 [ext_resource path="res://scenes/cloud/cat_1.png" type="Texture" id=6]
 [ext_resource path="res://scenes/cloud/drop.png" type="Texture" id=7]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.2684, 33.0911 )
 
@@ -21,7 +20,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 color = Color( 0.866667, 0.866667, 0.866667, 1 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 2
 emission_box_extents = Vector3( 50, 0, 1 )
 flag_disable_z = true
@@ -30,7 +29,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 color = Color( 0.866667, 0.866667, 0.866667, 1 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -80,7 +79,7 @@ lifetime = 3.0
 randomness = 1.0
 visibility_rect = Rect2( -100, -100, 200, 1000 )
 local_coords = false
-process_material = SubResource( 4 )
+process_material = SubResource( 3 )
 texture = ExtResource( 6 )
 
 [node name="ParticlesCat2" type="Particles2D" parent="."]
@@ -89,7 +88,7 @@ amount = 4
 lifetime = 3.0
 visibility_rect = Rect2( -100, -100, 200, 1000 )
 local_coords = false
-process_material = SubResource( 4 )
+process_material = SubResource( 3 )
 texture = ExtResource( 4 )
 
 [node name="ParticlesDog1" type="Particles2D" parent="."]
@@ -98,11 +97,11 @@ amount = 4
 lifetime = 3.0
 visibility_rect = Rect2( -100, -100, 200, 1000 )
 local_coords = false
-process_material = SubResource( 4 )
+process_material = SubResource( 3 )
 texture = ExtResource( 5 )
 
 [node name="cloud" type="AnimatedSprite" parent="."]
 position = Vector2( 0.451874, -19.8823 )
-frames = SubResource( 3 )
+frames = SubResource( 4 )
 animation = "happy"
 [connection signal="input_event" from="." to="." method="_on_Cloud_input_event"]

@@ -27,7 +27,7 @@ animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "fly",
-"speed": 5.0
+"speed": 16.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -40,6 +40,7 @@ script = ExtResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "fly"
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]

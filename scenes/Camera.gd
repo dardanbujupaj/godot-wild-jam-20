@@ -1,6 +1,8 @@
 extends Camera2D
 
 
+const SCROLL_SPEED = 200
+
 # position to get back to when zooming out
 var home_position
 
@@ -8,8 +10,21 @@ var home_position
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	home_position = position
-	pass # Replace with function body.
 
+
+func _process(delta):
+	print(get_local_mouse_position())
+	print(get_viewport().size * zoom)
+	if (get_local_mouse_position().x > get_viewport().size.x * zoom.x / 2 - 20 or
+			Input.is_action_pressed("ui_right")):
+		position.x += SCROLL_SPEED * delta
+		home_position.x += SCROLL_SPEED * delta
+		
+
+	if (get_local_mouse_position().x < -get_viewport().size.x * zoom.x / 2 + 20 or
+		Input.is_action_pressed("ui_left")):
+		position.x -= SCROLL_SPEED * delta
+		home_position.x -= SCROLL_SPEED * delta
 
 var current_node
 

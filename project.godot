@@ -82,5 +82,5 @@ click={
 
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.0196078, 0.517647, 0.917647, 1 )
+environment/default_clear_color=Color( 0.368627, 0.929412, 0.929412, 1 )
 environment/default_environment="res://default_env.tres"

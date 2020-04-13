@@ -36,7 +36,7 @@ func _on_Cloud_input_event(viewport, event, shape_idx):
 		
 		if !$ParticlesMild.emitting and !$ParticlesStrong.emitting:
 			$ParticlesMild.emitting = true
-			rain_level = 1
+			rain_level = 2
 		elif $ParticlesMild.emitting:
 			$ParticlesMild.emitting = false
 			$ParticlesStrong.emitting = true
