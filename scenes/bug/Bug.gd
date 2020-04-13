@@ -96,5 +96,5 @@ func _on_Bug_mouse_entered():
 
 # land on dandelions
 func _on_Bug_body_entered(body):
-	if body is Dandelion:
+	if body == target:
 		land_on(body)

@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var selection_helper = $SelectionHelper
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +14,26 @@ func _input(event):
 	# open overlay menu when "escape" is pressed
 	if Input.is_action_just_pressed("exit"):
 		_popup_overlay_menu()
+
+
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("click"):
+		var zoom_out = true
 		
+		for node in selection_helper.get_overlapping_areas():
+			if node is Dandelion:
+				zoom_out = false
+				$Camera.zoom_to(node)
+				break
+		
+		if zoom_out:
+			$Camera.zoom_out()
+
+
+func _process(delta):
+	# update selection helper
+	selection_helper.position = get_global_mouse_position()
+
 
 # open the overlay menu
 func _popup_overlay_menu():
@@ -51,13 +71,3 @@ func _on_WindRight_pressed():
 func _on_WindLeft_pressed():
 	$Cloud.velocity = Vector2(-1, 0)
 
-
-
-
-
-func _on_Dandelion_input_event(viewport, event, shape_idx, dandelion):
-	if Input.is_action_just_pressed("click"):
-		if dandelion.active:
-			$Camera.zoom_out()
-		else:
-			$Camera.zoom_to(dandelion)

@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/Cloud.gd"
 }, {
-"base": "StaticBody2D",
+"base": "Area2D",
 "class": "Dandelion",
 "language": "GDScript",
 "path": "res://scenes/Dandelion.gd"

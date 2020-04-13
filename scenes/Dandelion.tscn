@@ -7,122 +7,122 @@
 [ext_resource path="res://scenes/rainometer_progress.png" type="Texture" id=5]
 [ext_resource path="res://scenes/rainometer_under.png" type="Texture" id=6]
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 64, 96 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 96, 64, 96 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 85, 64, 85 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
 region = Rect2( 192, 0, 64, 85 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 384, 0, 64, 85 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
 region = Rect2( 320, 0, 64, 85 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
 region = Rect2( 256, 0, 64, 85 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
 region = Rect2( 192, 0, 64, 85 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
 region = Rect2( 128, 0, 64, 85 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
 region = Rect2( 64, 0, 64, 85 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 64, 85 )
+region = Rect2( 0, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )
-region = Rect2( 128, 0, 64, 85 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 192, 64, 96 )
+region = Rect2( 64, 0, 64, 85 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 64, 85 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 192, 64, 96 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 64, 85 )
 
-[sub_resource type="SpriteFrames" id=14]
+[sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 23 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 2 ) ],
 "loop": true,
 "name": "age_5_wind_left",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 4 ) ],
+"frames": [ SubResource( 3 ) ],
 "loop": true,
 "name": "age_3",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 5 ) ],
+"frames": [ SubResource( 4 ) ],
 "loop": true,
 "name": "age_0",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "fast",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 11 ) ],
+"frames": [ SubResource( 12 ) ],
 "loop": true,
 "name": "age_2",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 12 ) ],
+"frames": [ SubResource( 13 ) ],
 "loop": true,
 "name": "age_1",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 22 ), SubResource( 24 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 1 ), SubResource( 14 ) ],
 "loop": true,
 "name": "age_5",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 13 ) ],
+"frames": [ SubResource( 15 ) ],
 "loop": true,
 "name": "age_4",
 "speed": 5.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.886275, 0.988235, 0, 1 )
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_left = 1
 border_width_top = 1
@@ -138,11 +138,10 @@ expand_margin_right = 2.0
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=19]
 radius = 60.2652
 
-[node name="Dandelion" type="StaticBody2D"]
-input_pickable = true
+[node name="Dandelion" type="Area2D"]
 script = ExtResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -151,9 +150,9 @@ cast_to = Vector2( 0, -1000 )
 
 [node name="dandelion" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -20 )
-frames = SubResource( 14 )
+frames = SubResource( 16 )
 animation = "age_5_wind_left"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Sunometer" type="ProgressBar" parent="."]
@@ -167,8 +166,8 @@ margin_top = -0.356987
 margin_right = -11.904
 margin_bottom = 13.643
 rect_rotation = -90.0
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
+custom_styles/fg = SubResource( 17 )
+custom_styles/bg = SubResource( 18 )
 value = 30.0
 percent_visible = false
 __meta__ = {
@@ -192,4 +191,4 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.475006, -16.625 )
-shape = SubResource( 3 )
+shape = SubResource( 19 )

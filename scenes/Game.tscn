@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Cloud.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/cog-solid.svg" type="Texture" id=2]
@@ -15,7 +15,7 @@
 [ext_resource path="res://scenes/wind_button/frame3.png" type="Texture" id=13]
 [ext_resource path="res://scenes/wind_button/frame7.png" type="Texture" id=14]
 
-[sub_resource type="AnimatedTexture" id=10]
+[sub_resource type="AnimatedTexture" id=1]
 frames = 6
 frame_0/texture = ExtResource( 11 )
 frame_1/texture = ExtResource( 12 )
@@ -28,6 +28,9 @@ frame_4/texture = ExtResource( 13 )
 frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 10 )
 frame_5/delay_sec = 0.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1, 1 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
@@ -74,7 +77,7 @@ rect_scale = Vector2( -1, 1 )
 rect_pivot_offset = Vector2( 32, 0 )
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 14 )
-texture_hover = SubResource( 10 )
+texture_hover = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -87,7 +90,7 @@ margin_right = 64.0
 margin_bottom = 32.0
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 14 )
-texture_hover = SubResource( 10 )
+texture_hover = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -112,6 +115,13 @@ zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 6 )
 
 [node name="Tween" type="Tween" parent="Camera"]
+
+[node name="SelectionHelper" type="Area2D" parent="."]
+position = Vector2( -282.099, -232.477 )
+rotation = -0.401704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionHelper"]
+shape = SubResource( 2 )
 [connection signal="about_to_show" from="UI/OverlayMenu" to="." method="_on_OverlayMenu_about_to_show"]
 [connection signal="popup_hide" from="UI/OverlayMenu" to="." method="_on_OverlayMenu_popup_hide"]
 [connection signal="pressed" from="UI/MarginContainer/Menu" to="." method="_popup_overlay_menu"]
