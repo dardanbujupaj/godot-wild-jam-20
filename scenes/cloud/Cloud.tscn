@@ -1,11 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/cloud/Cloud.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cloud/cloud1_2.png" type="Texture" id=2]
 [ext_resource path="res://scenes/cloud/cloud1_3.png" type="Texture" id=3]
-[ext_resource path="res://scenes/cloud/cat_2.png" type="Texture" id=4]
-[ext_resource path="res://scenes/cloud/dog_1.png" type="Texture" id=5]
-[ext_resource path="res://scenes/cloud/cat_1.png" type="Texture" id=6]
 [ext_resource path="res://scenes/cloud/drop.png" type="Texture" id=7]
 [ext_resource path="res://scenes/cloud/cloud1_1.png" type="Texture" id=8]
 [ext_resource path="res://scenes/cloud/cloud1_5.png" type="Texture" id=9]
@@ -25,12 +22,24 @@ color = Color( 0.866667, 0.866667, 0.866667, 1 )
 
 [sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 2
-emission_box_extents = Vector3( 50, 0, 1 )
+emission_box_extents = Vector3( 50, 10, 1 )
 flag_disable_z = true
 gravity = Vector3( 0, 98, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 color = Color( 0.866667, 0.866667, 0.866667, 1 )
+
+[sub_resource type="StreamTexture" id=5]
+load_path = "res://.import/cat_1.png-4704d8b8e0c4c42e7d33bffe559d82a1.stex"
+
+[sub_resource type="StreamTexture" id=6]
+load_path = "res://.import/cat_2.png-92ad05324ca03f69a2c21857fec9fff4.stex"
+
+[sub_resource type="StreamTexture" id=7]
+load_path = "res://.import/dog_1.png-59f86aa7e7e49445cba138d2303564a6.stex"
+
+[sub_resource type="StreamTexture" id=8]
+load_path = "res://.import/dog_2.png-654a765dae5fb71d1a077ef358c41e36.stex"
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -44,11 +53,6 @@ animations = [ {
 "name": "2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "5",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "3",
@@ -57,6 +61,11 @@ animations = [ {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "5",
 "speed": 5.0
 } ]
 
@@ -90,20 +99,20 @@ texture = ExtResource( 7 )
 emitting = false
 amount = 4
 lifetime = 3.0
-randomness = 1.0
 visibility_rect = Rect2( -100, -100, 200, 1000 )
 local_coords = false
 process_material = SubResource( 3 )
-texture = ExtResource( 6 )
+texture = SubResource( 5 )
 
 [node name="ParticlesCat2" type="Particles2D" parent="."]
 emitting = false
 amount = 4
 lifetime = 3.0
+randomness = 1.0
 visibility_rect = Rect2( -100, -100, 200, 1000 )
 local_coords = false
 process_material = SubResource( 3 )
-texture = ExtResource( 4 )
+texture = SubResource( 6 )
 
 [node name="ParticlesDog1" type="Particles2D" parent="."]
 emitting = false
@@ -112,11 +121,28 @@ lifetime = 3.0
 visibility_rect = Rect2( -100, -100, 200, 1000 )
 local_coords = false
 process_material = SubResource( 3 )
-texture = ExtResource( 5 )
+texture = SubResource( 7 )
+
+[node name="ParticlesDog2" type="Particles2D" parent="."]
+emitting = false
+amount = 4
+lifetime = 3.0
+visibility_rect = Rect2( -100, -100, 200, 1000 )
+local_coords = false
+process_material = SubResource( 3 )
+texture = SubResource( 8 )
 
 [node name="cloud" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -20 )
 frames = SubResource( 4 )
 animation = "1"
 playing = true
+
+[node name="RainTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AngerTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="input_event" from="." to="." method="_on_Cloud_input_event"]
+[connection signal="timeout" from="RainTimer" to="." method="_on_RainTimer_timeout"]
+[connection signal="timeout" from="AngerTimer" to="." method="_on_AngerTimer_timeout"]

@@ -6,10 +6,11 @@ class_name Dandelion
 var sun = 0
 var rain = 0
 
-const MIN_AGE_TIME = 15
-const MAX_AGE_TIME = 25
+const MAX_AGE_LOWER_LIMIT = 30
+const MAX_AGE_UPPER_LIMIT = 120
 
 var next_age_countdown = 0
+var max_age = 0
 var age = 0
 
 var size = 1
@@ -31,8 +32,8 @@ func _ready():
 	
 	randomize()
 	set_active(false)
-	
-	next_age_countdown = rand_range(MIN_AGE_TIME, MAX_AGE_TIME)
+	max_age =  rand_range(MAX_AGE_LOWER_LIMIT, MAX_AGE_UPPER_LIMIT)
+	next_age_countdown = max_age / 4
 
 
 func _input(event):
@@ -70,10 +71,10 @@ func _process(delta):
 	var grow_rate = .2
 	# check rain bar
 	if rain > 25 and rain < 75:
-		grow_rate += 2
+		grow_rate += 1
 	#check sun bar
 	if sun > 25 and sun < 75:
-		grow_rate += 2
+		grow_rate += 1
 	#change size
 	size += delta * grow_rate
 	
@@ -91,7 +92,7 @@ func _process(delta):
 	if next_age_countdown < 0:
 		age += 1
 		
-		next_age_countdown = rand_range(MIN_AGE_TIME, MAX_AGE_TIME)
+		next_age_countdown = max_age / 4
 		
 		if age < 4:
 			$flower.play("age_" + str(age))

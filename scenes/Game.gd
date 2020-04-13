@@ -49,7 +49,7 @@ func add_dandelion(position):
 	var dandelion = preload("res://scenes/dandelion/Dandelion.tscn").instance()
 	
 	dandelion.position = position
-	dandelion.connect("input_event", self, "_on_Dandelion_input_event", [dandelion])
+	# dandelion.connect("input_event", self, "_on_Dandelion_input_event", [dandelion])
 	
 	add_child(dandelion)
 	return dandelion
