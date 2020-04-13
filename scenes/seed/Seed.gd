@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 
 
@@ -23,6 +23,9 @@ func _physics_process(delta):
 	rotation = velocity.x / 100
 	
 	if position.y > 0:
+		for area in get_overlapping_areas():
+			queue_free()
+			return
 		spawn_dandelion()
 	
 	

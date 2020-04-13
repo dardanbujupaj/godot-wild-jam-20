@@ -33,8 +33,8 @@ func _unhandled_input(event):
 func _process(delta):
 	# update selection helper
 	selection_helper.position = get_global_mouse_position()
-
-		
+	
+	$UI/DandelionCounter.text = str(len(get_tree().get_nodes_in_group("dandelions")))
 		
 	
 

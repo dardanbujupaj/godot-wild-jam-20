@@ -6,6 +6,9 @@ class_name Dandelion
 var sun = 0
 var rain = 0
 
+const MIN_AGE_TIME = 15
+const MAX_AGE_TIME = 25
+
 var next_age_countdown = 0
 var age = 0
 
@@ -24,10 +27,12 @@ func set_active(new_active):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("dandelions")
+	
 	randomize()
 	set_active(false)
 	
-	next_age_countdown = rand_range(5, 15)
+	next_age_countdown = rand_range(MIN_AGE_TIME, MAX_AGE_TIME)
 
 
 func _input(event):
@@ -49,7 +54,7 @@ func _process(delta):
 	if collider is Cloud and rain <= 100:
 		var cloud = collider as Cloud
 		
-		rain += cloud.rain_level * delta
+		rain += cloud.get_rain_amount() * delta
 	
 	if rain > 0:
 		rain -= delta * 0.5
@@ -86,12 +91,12 @@ func _process(delta):
 	if next_age_countdown < 0:
 		age += 1
 		
-		next_age_countdown = rand_range(5, 15)
+		next_age_countdown = rand_range(MIN_AGE_TIME, MAX_AGE_TIME)
 		
 		if age < 4:
 			$flower.play("age_" + str(age))
 		else:
-			for i in range(round(size / 10)):
+			for i in range(round(size / 20)):
 				release_seed()
 			queue_free()
 
@@ -100,3 +105,4 @@ func release_seed():
 	var seed_node = preload("res://scenes/seed/Seed.tscn").instance()
 	seed_node.position = position + Vector2(0, -60)
 	get_parent().add_child(seed_node)
+

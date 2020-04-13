@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/cloud/Cloud.gd" type="Script" id=1]
-[ext_resource path="res://scenes/cloud/cloud_furious.png" type="Texture" id=2]
-[ext_resource path="res://scenes/cloud/cloud_happy.png" type="Texture" id=3]
+[ext_resource path="res://scenes/cloud/cloud1_2.png" type="Texture" id=2]
+[ext_resource path="res://scenes/cloud/cloud1_3.png" type="Texture" id=3]
 [ext_resource path="res://scenes/cloud/cat_2.png" type="Texture" id=4]
 [ext_resource path="res://scenes/cloud/dog_1.png" type="Texture" id=5]
 [ext_resource path="res://scenes/cloud/cat_1.png" type="Texture" id=6]
 [ext_resource path="res://scenes/cloud/drop.png" type="Texture" id=7]
+[ext_resource path="res://scenes/cloud/cloud1_1.png" type="Texture" id=8]
+[ext_resource path="res://scenes/cloud/cloud1_5.png" type="Texture" id=9]
+[ext_resource path="res://scenes/cloud/cloud1_4.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.2684, 33.0911 )
@@ -31,19 +34,29 @@ color = Color( 0.866667, 0.866667, 0.866667, 1 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "happy",
+"name": "1",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "furious",
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "4",
 "speed": 5.0
 } ]
 
@@ -52,6 +65,7 @@ input_pickable = true
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -20 )
 shape = SubResource( 1 )
 
 [node name="ParticlesMild" type="Particles2D" parent="."]
@@ -101,7 +115,8 @@ process_material = SubResource( 3 )
 texture = ExtResource( 5 )
 
 [node name="cloud" type="AnimatedSprite" parent="."]
-position = Vector2( 0.451874, -19.8823 )
+position = Vector2( 0, -20 )
 frames = SubResource( 4 )
-animation = "happy"
+animation = "1"
+playing = true
 [connection signal="input_event" from="." to="." method="_on_Cloud_input_event"]

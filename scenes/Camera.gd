@@ -13,8 +13,6 @@ func _ready():
 
 
 func _process(delta):
-	print(get_local_mouse_position())
-	print(get_viewport().size * zoom)
 	if (get_local_mouse_position().x > get_viewport().size.x * zoom.x / 2 - 20 or
 			Input.is_action_pressed("ui_right")):
 		position.x += SCROLL_SPEED * delta
@@ -52,7 +50,6 @@ func zoom_to(node):
 	node.active = true
 	
 func zoom_out():
-	print("zoom out")
 	# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
 	var wr = weakref(current_node)
 	if wr.get_ref():

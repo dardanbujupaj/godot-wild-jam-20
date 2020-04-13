@@ -18,6 +18,7 @@ func _ready():
 
 # where to fly next
 var target: Node2D
+var last_target: Node2D
 
 # make the bug change its flight direction
 var angular_velocity = 0
@@ -48,9 +49,13 @@ func _process(delta):
 func find_target():
 	var nodes = get_parent().get_children()
 	nodes.shuffle()
+	
 	for node in nodes:
 		if node is Dandelion:
-			target = node
+			if node != last_target:
+				target = node
+				last_target = node
+				break
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,6 +68,7 @@ func _physics_process(delta):
 
 #take of from object
 func take_off():
+	target = null
 	sprite.play("take_off")
 
 
