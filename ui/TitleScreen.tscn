@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/TitleScreen.gd" type="Script" id=1]
-[ext_resource path="res://scenes/seed/seed.png" type="Texture" id=2]
+[ext_resource path="res://game/seed/seed.png" type="Texture" id=2]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
-emission_box_extents = Vector3( 1, 600, 1 )
+emission_box_extents = Vector3( 50, 600, 1 )
 flag_disable_z = true
 gravity = Vector3( 98, 0, 0 )
 initial_velocity = 100.0
@@ -26,29 +26,82 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -38.5
-margin_top = -22.0
-margin_right = 38.5
-margin_bottom = 22.0
+margin_left = -68.5
+margin_top = -74.0
+margin_right = 68.5
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 130.0
+margin_bottom = 141.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGame" type="Button" parent="VBoxContainer"]
-margin_right = 77.0
-margin_bottom = 20.0
-text = "new game"
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_right = 123.0
+margin_bottom = 14.0
+text = "godot wild jam #20"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
-margin_top = 24.0
-margin_right = 77.0
-margin_bottom = 44.0
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 123.0
+margin_bottom = 22.0
+
+[node name="Sandbox" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 26.0
+margin_right = 123.0
+margin_bottom = 46.0
+hint_tooltip = "No goals, no stress.
+Just play and enjoy."
+text = "sandbox"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timelimit" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 123.0
+margin_bottom = 70.0
+hint_tooltip = "How many dandelions can you plant within the timelimit?"
+text = "timelimit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 123.0
+margin_bottom = 78.0
+
+[node name="Settings" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 123.0
+margin_bottom = 102.0
+hint_tooltip = "Game settings and advanced options."
+text = "settings"
+
+[node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+margin_top = 106.0
+margin_right = 123.0
+margin_bottom = 110.0
+
+[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 114.0
+margin_right = 123.0
+margin_bottom = 134.0
+hint_tooltip = "Quit to Desktop."
 text = "quit"
 
 [node name="Particles2D" type="Particles2D" parent="."]
@@ -58,5 +111,6 @@ amount = 64
 lifetime = 20.0
 process_material = SubResource( 1 )
 texture = ExtResource( 2 )
-[connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Sandbox" to="." method="_on_Sandbox_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Timelimit" to="." method="_on_Timelimit_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
