@@ -1,22 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://ui/TitleScreen.gd" type="Script" id=1]
-[ext_resource path="res://game/seed/seed.png" type="Texture" id=2]
-
-[sub_resource type="ParticlesMaterial" id=1]
-emission_shape = 2
-emission_box_extents = Vector3( 50, 600, 1 )
-flag_disable_z = true
-gravity = Vector3( 98, 0, 0 )
-initial_velocity = 100.0
-initial_velocity_random = 1.0
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = -6.35
-radial_accel = -100.0
-radial_accel_random = 0.2
-tangential_accel = 24.48
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -104,13 +88,22 @@ margin_bottom = 134.0
 hint_tooltip = "Quit to Desktop."
 text = "quit"
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="Particles2D" type="CPUParticles2D" parent="."]
 position = Vector2( -27.1092, 444.777 )
 z_index = -1
+emitting = false
 amount = 64
 lifetime = 20.0
-process_material = SubResource( 1 )
-texture = ExtResource( 2 )
+emission_shape = 2
+emission_rect_extents = Vector2( 50, 600 )
+gravity = Vector2( 98, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 1.0
+angular_velocity_random = 1.0
+linear_accel = -6.35
+radial_accel = -100.0
+radial_accel_random = 0.2
+tangential_accel = 24.48
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Sandbox" to="." method="_on_Sandbox_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Timelimit" to="." method="_on_Timelimit_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

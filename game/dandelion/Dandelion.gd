@@ -44,11 +44,12 @@ func _input(event):
 	if event is InputEventKey:
 		var key_event = event as InputEventKey
 		if key_event.pressed and not key_event.echo and key_event.scancode == KEY_S:
-			release_seed()
+			get_parent().release_seeds(position + $flower.position, 1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	scale *= 1.01
 	
 	# check for cloud
 	var collider = $RayCast2D.get_collider()
@@ -106,16 +107,9 @@ func _process(delta):
 				
 			$flower.play(animation)
 		else:
-			for i in range(round(size / 20)):
-				release_seed()
+			get_parent().release_seeds($flower.position, round(size / 20))
+			
 			queue_free()
-
-
-func release_seed():
-	var seed_node = preload("res://game/seed/Seed.tscn").instance()
-	seed_node.position = position + Vector2(0, -60)
-	get_parent().add_child(seed_node)
-
 
 
 func update_animations():

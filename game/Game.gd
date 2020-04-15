@@ -69,9 +69,15 @@ func add_dandelion(position):
 	# dandelion.connect("input_event", self, "_on_Dandelion_input_event", [dandelion])
 	
 	add_child(dandelion)
-	return dandelion
 
 
+var seed_scene = load("res://game/seed/Seed.tscn")
+
+func release_seeds(release_position, amount):
+	#for _i in range(amount):
+	var seed_instance = seed_scene.instance()
+	seed_instance.position = release_position
+	add_child(seed_instance)
 
 
 # pause and unpause game depending ond overlay menu

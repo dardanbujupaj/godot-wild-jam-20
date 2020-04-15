@@ -7,7 +7,6 @@
 [ext_resource path="res://game/bug/bug5.png" type="Texture" id=5]
 [ext_resource path="res://game/bug/Bug.gd" type="Script" id=6]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
@@ -20,15 +19,15 @@ animations = [ {
 "name": "land",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "sit",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "fly",
 "speed": 16.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "sit",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -41,6 +40,7 @@ script = ExtResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "fly"
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
