@@ -49,7 +49,6 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	scale *= 1.01
 	
 	# check for cloud
 	var collider = $RayCast2D.get_collider()
