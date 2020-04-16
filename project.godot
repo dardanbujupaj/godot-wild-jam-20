@@ -48,6 +48,7 @@ config/icon="res://assets/icon.png"
 
 Settings="*res://Settings.gd"
 Constants="*res://game/Constants.gd"
+GameService="*res://game/GameService.gd"
 
 [display]
 

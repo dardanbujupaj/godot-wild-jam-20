@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sun.png-e1c80d80e5d7c1307501457151aedf16.stex"
+path="res://.import/sun.png-b2b47995372b5284d1cdcb0928fd5aa7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/sun.png"
-dest_files=[ "res://.import/sun.png-e1c80d80e5d7c1307501457151aedf16.stex" ]
+source_file="res://game/sun/sun.png"
+dest_files=[ "res://.import/sun.png-b2b47995372b5284d1cdcb0928fd5aa7.stex" ]
 
 [params]
 

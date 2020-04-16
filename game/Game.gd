@@ -11,22 +11,23 @@ enum {
 
 var game_mode = MODE_FREE
 
+var game_over = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	match game_mode:
-		MODE_FREE:
-			pass
-		MODE_TIMELIMIT:
-			$TimelimitTimer.start(120)
-		MODE_GOAL:
-			pass
-		MODE_MISSION:
-			$TimelimitTimer.start(120)
+	if GameService.time_limit != null:
+		$TimelimitTimer.start(GameService.time_limit)
+	else:
+		$UI/PanelContainer/VBoxContainer/HBoxTimer.hide()
 	
 	# place starting dandelions
-	var start_dandelion = add_dandelion(Vector2(0, 0))
-	add_dandelion(Vector2(200, 0))
+	add_dandelion(Vector2(0, 0))
+	
+	GameService.reset()
 
+func _refresh_panel():
+	$UI/PanelContainer.hide()
+	$UI/PanelContainer.show()
 
 func _input(event):
 	# open overlay menu when "escape" is pressed
@@ -54,8 +55,26 @@ func _process(delta):
 	# update selection helper
 	selection_helper.position = get_global_mouse_position()
 	
-	$UI/PanelContainer/HBoxContainer/DandelionCounter.text = str(len(get_tree().get_nodes_in_group("dandelions")))
+	check_and_update_stats()
+
+func check_and_update_stats():
+	# update dandelion counter
+	var dandelion_count = get_tree().get_nodes_in_group("dandelions")
+	$UI/PanelContainer/VBoxContainer/HBoxCounter/DandelionCounter.text = str(len(dandelion_count))
 	
+	# update timer
+	var time_left = $TimelimitTimer.time_left
+	var hours = int(time_left / 3600)
+	var minutes = int(time_left / 60) % 60
+	var seconds = int(time_left) % 60
+	
+	var time_string
+	if hours > 0:
+		time_string = "%d:%02d:%02d" % [hours, minutes, seconds]
+	else:
+		time_string = "%d:%02d" % [minutes, seconds]
+		
+	$UI/PanelContainer/VBoxContainer/HBoxTimer/Timer.text = time_string
 
 
 # open the overlay menu
@@ -82,13 +101,19 @@ func release_seeds(release_position, amount):
 		add_child(seed_instance)
 
 
+
+func end_game():
+	get_tree().paused = true
+	game_over = true
+
 # pause and unpause game depending ond overlay menu
 func _on_OverlayMenu_about_to_show():
 	get_tree().paused = true
 
 
 func _on_OverlayMenu_popup_hide():
-	get_tree().paused = false
+	if !game_over:
+		get_tree().paused = false
 
 
 
@@ -115,3 +140,8 @@ func _on_WindLeft_button_down():
 func _on_Wind_button_up():
 	get_tree().call_group("dandelions", "stop_blowing")
 	$Cloud.stop_accelerating()
+
+
+func _on_TimelimitTimer_timeout():
+	end_game()
+	pass # Replace with function body.

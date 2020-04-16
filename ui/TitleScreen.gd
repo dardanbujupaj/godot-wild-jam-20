@@ -10,17 +10,15 @@ func _ready():
 
 
 func _on_Sandbox_pressed():
-	
-	get_tree().change_scene("res://game/Game.tscn")
-	pass # Replace with function body.
+	GameService.start_game()
 
 
 func _on_Timelimit_pressed():
-	pass # Replace with function body.
+	GameService.time_limit = 65
+	GameService.start_game()
 
 func _on_Quit_pressed():
 	get_tree().quit()
-	pass # Replace with function body.
 
 
 func _on_Settings_pressed():

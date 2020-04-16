@@ -359,6 +359,7 @@ offset = Vector2( -3, 0 )
 [node name="flower" type="AnimatedSprite" parent="."]
 frames = SubResource( 50 )
 animation = "age_0"
+frame = 1
 playing = true
 
 [node name="Sunometer" type="ProgressBar" parent="."]
