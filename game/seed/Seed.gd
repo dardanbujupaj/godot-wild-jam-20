@@ -24,10 +24,19 @@ func _physics_process(delta):
 	
 	rotation = velocity.x / 100
 	
+	
+		
 	if position.y > 0:
+		if position.x > Constants.GAME_WIDTH / 2 or position.x < -Constants.GAME_WIDTH / 2:
+			# seed landed outside game width
+			queue_free()
+			return 
+			
 		for area in get_overlapping_areas():
+			# area already occupied
 			queue_free()
 			return
+		
 		spawn_dandelion()
 	
 	

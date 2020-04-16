@@ -3,7 +3,7 @@ extends Camera2D
 const ZOOM_NEAR = .25
 const ZOOM_FAR = .5
 
-var camera_range = 1500
+var camera_range = Constants.GAME_WIDTH / 2
 
 # position to get back to when zooming out
 var home_position

@@ -47,6 +47,7 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 Settings="*res://Settings.gd"
+Constants="*res://game/Constants.gd"
 
 [display]
 

@@ -32,6 +32,9 @@ func _input(event):
 	# open overlay menu when "escape" is pressed
 	if Input.is_action_just_pressed("exit"):
 		_popup_overlay_menu()
+	
+	if Input.is_key_pressed(KEY_F):
+		add_dandelion(get_global_mouse_position())
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("click"):
