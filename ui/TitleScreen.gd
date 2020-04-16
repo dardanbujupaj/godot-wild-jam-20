@@ -21,3 +21,8 @@ func _on_Timelimit_pressed():
 func _on_Quit_pressed():
 	get_tree().quit()
 	pass # Replace with function body.
+
+
+func _on_Settings_pressed():
+	$SettingsDialog.popup_centered()
+	pass # Replace with function body.

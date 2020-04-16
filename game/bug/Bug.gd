@@ -47,15 +47,14 @@ func _process(delta):
 
 # finde a new target 
 func find_target():
-	var nodes = get_parent().get_children()
+	var nodes = get_tree().get_nodes_in_group("dandelions")
 	nodes.shuffle()
 	
 	for node in nodes:
-		if node is Dandelion:
-			if node != last_target:
-				target = node
-				last_target = node
-				break
+		if node != last_target:
+			target = node
+			last_target = node
+			break
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

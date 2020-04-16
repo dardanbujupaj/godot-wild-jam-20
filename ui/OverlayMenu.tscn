@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/OverlayMenu.gd" type="Script" id=1]
+[ext_resource path="res://ui/SettingsDialog.tscn" type="PackedScene" id=2]
 
 [node name="OverlayMenu" type="PopupPanel"]
 pause_mode = 2
@@ -16,7 +17,7 @@ __meta__ = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 155.0
-margin_bottom = 118.0
+margin_bottom = 142.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -26,7 +27,7 @@ custom_constants/margin_bottom = 10
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 141.0
-margin_bottom = 104.0
+margin_bottom = 128.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 131.0
@@ -43,6 +44,12 @@ margin_right = 131.0
 margin_bottom = 38.0
 text = "resume"
 
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 12.0
+margin_bottom = 38.0
+text = "settings"
+
 [node name="Title" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 42.0
 margin_right = 131.0
@@ -54,8 +61,15 @@ margin_top = 66.0
 margin_right = 131.0
 margin_bottom = 86.0
 text = "quit"
+
+[node name="SettingsDialog" parent="." instance=ExtResource( 2 )]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 155.0
+margin_bottom = 142.0
 [connection signal="about_to_show" from="." to="." method="_on_OverlayMenu_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_OverlayMenu_popup_hide"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Title" to="." method="_on_Title_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

@@ -1,7 +1,9 @@
 extends Camera2D
 
+const ZOOM_NEAR = .25
+const ZOOM_FAR = .5
 
-const SCROLL_SPEED = 200
+var camera_range = 1500
 
 # position to get back to when zooming out
 var home_position
@@ -11,19 +13,31 @@ var home_position
 func _ready():
 	home_position = position
 
-
-func _process(delta):
-	if (get_local_mouse_position().x > get_viewport().size.x * zoom.x / 2 - 20 or
-			Input.is_action_pressed("ui_right")):
-		position.x += SCROLL_SPEED * delta
-		home_position.x += SCROLL_SPEED * delta
+func _input(event):
+	var scrollspeed = Settings.get_property("scrollspeed")
+	var viewport_width = get_viewport_rect().size.x
+	
 		
-
-	if (get_local_mouse_position().x < -get_viewport().size.x * zoom.x / 2 + 20 or
-		Input.is_action_pressed("ui_left")):
-		position.x -= SCROLL_SPEED * delta
-		home_position.x -= SCROLL_SPEED * delta
-
+	if event.is_action("scroll_left") and position.x + viewport_width / 2 * zoom.x < camera_range:
+		position.x += scrollspeed
+		
+		set_home_position(home_position + Vector2(scrollspeed, 0))
+		
+	if event.is_action("scroll_right") and position.x - viewport_width / 2 * zoom.x > -camera_range:
+		position.x -= scrollspeed
+		
+		set_home_position(home_position + Vector2(-scrollspeed, 0))
+		
+		
+# check if 
+func set_home_position(new_position):
+	var viewport_width = get_viewport_rect().size.x
+	
+	if (new_position.x - viewport_width / 2 * ZOOM_FAR > -camera_range and
+		new_position.x + viewport_width / 2 * ZOOM_FAR < camera_range):
+		home_position = new_position
+	
+	
 var current_node
 
 func zoom_to(node):
@@ -53,6 +67,7 @@ func zoom_out():
 	# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
 	var wr = weakref(current_node)
 	if wr.get_ref():
+		print(current_node)
 		# set old node inactive
 		current_node.active = false
 	
@@ -66,3 +81,4 @@ func zoom_out():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+

@@ -33,7 +33,6 @@ func _input(event):
 	if Input.is_action_just_pressed("exit"):
 		_popup_overlay_menu()
 
-
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("click"):
 		var zoom_out = true
@@ -52,7 +51,7 @@ func _process(delta):
 	# update selection helper
 	selection_helper.position = get_global_mouse_position()
 	
-	$UI/DandelionCounter.text = str(len(get_tree().get_nodes_in_group("dandelions")))
+	$UI/PanelContainer/HBoxContainer/DandelionCounter.text = str(len(get_tree().get_nodes_in_group("dandelions")))
 	
 
 
@@ -74,10 +73,10 @@ func add_dandelion(position):
 var seed_scene = load("res://game/seed/Seed.tscn")
 
 func release_seeds(release_position, amount):
-	#for _i in range(amount):
-	var seed_instance = seed_scene.instance()
-	seed_instance.position = release_position
-	add_child(seed_instance)
+	for _i in range(amount):
+		var seed_instance = seed_scene.instance()
+		seed_instance.position = release_position
+		add_child(seed_instance)
 
 
 # pause and unpause game depending ond overlay menu
