@@ -103,8 +103,10 @@ func release_seeds(release_position, amount):
 
 
 func end_game():
-	get_tree().paused = true
-	game_over = true
+	# TODO Gameover
+	#get_tree().paused = true
+	#game_over = true
+	pass
 
 # pause and unpause game depending ond overlay menu
 func _on_OverlayMenu_about_to_show():
