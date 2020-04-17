@@ -41,18 +41,13 @@ func set_home_position(new_position):
 var current_node
 
 func zoom_to(node):
-	print("zoom in")
-	print(current_node)
-	if current_node == null:
-		print("set home position")
-		# remember zooomed out position
-		home_position = position
-	else:
-		# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
-		var wr = weakref(current_node)
-		if wr.get_ref():
-			# old node inactive
-			current_node.active = false
+	
+	
+	# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
+	var wr = weakref(current_node)
+	if wr.get_ref():
+		# old node inactive
+		current_node.active = false
 	
 	$Tween.interpolate_property(self, "position", position, node.position, 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	$Tween.interpolate_property(self, "zoom", zoom, Vector2(0.25, 0.25), 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
