@@ -43,6 +43,7 @@ func _unhandled_input(event):
 		
 		for node in selection_helper.get_overlapping_areas():
 			if node is Dandelion:
+				print("zoom to %s" % node)
 				zoom_out = false
 				$Camera.zoom_to(node)
 				break

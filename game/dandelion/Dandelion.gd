@@ -106,7 +106,7 @@ func _process(delta):
 				
 			$flower.play(animation)
 		else:
-			get_parent().release_seeds($flower.position, round(size / 20))
+			get_parent().release_seeds(position + $flower.position, round(size / 20))
 			
 			queue_free()
 
