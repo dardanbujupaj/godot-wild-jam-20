@@ -15,6 +15,10 @@ var age = 0
 
 var size = 1
 
+
+var fertilized = false
+
+
 var is_blowing_left = false
 var is_blowing_right = false
 
@@ -171,3 +175,8 @@ func stop_blowing():
 	
 	is_blowing_left = false
 	is_blowing_right = false
+
+
+func fertilize():
+	fertilized = true
+	$flower/CPUParticles2D.emitting = true

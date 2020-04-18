@@ -18,9 +18,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -68.5
-margin_top = -74.0
+margin_top = -86.0
 margin_right = 68.5
-margin_bottom = 74.0
+margin_bottom = 86.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -29,7 +29,7 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 130.0
-margin_bottom = 141.0
+margin_bottom = 165.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,10 +45,21 @@ margin_top = 18.0
 margin_right = 123.0
 margin_bottom = 22.0
 
-[node name="Sandbox" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Missions" type="Button" parent="PanelContainer/VBoxContainer"]
 margin_top = 26.0
 margin_right = 123.0
 margin_bottom = 46.0
+hint_tooltip = "No goals, no stress.
+Just play and enjoy."
+text = "missions"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sandbox" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 123.0
+margin_bottom = 70.0
 hint_tooltip = "No goals, no stress.
 Just play and enjoy."
 text = "sandbox"
@@ -57,9 +68,9 @@ __meta__ = {
 }
 
 [node name="Timelimit" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 50.0
+margin_top = 74.0
 margin_right = 123.0
-margin_bottom = 70.0
+margin_bottom = 94.0
 hint_tooltip = "How many dandelions can you plant within the timelimit?"
 text = "timelimit"
 __meta__ = {
@@ -67,26 +78,26 @@ __meta__ = {
 }
 
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer"]
-margin_top = 74.0
-margin_right = 123.0
-margin_bottom = 78.0
-
-[node name="Settings" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 82.0
+margin_top = 98.0
 margin_right = 123.0
 margin_bottom = 102.0
+
+[node name="Settings" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 106.0
+margin_right = 123.0
+margin_bottom = 126.0
 hint_tooltip = "Game settings and advanced options."
 text = "settings"
 
 [node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer"]
-margin_top = 106.0
-margin_right = 123.0
-margin_bottom = 110.0
-
-[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 114.0
+margin_top = 130.0
 margin_right = 123.0
 margin_bottom = 134.0
+
+[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 138.0
+margin_right = 123.0
+margin_bottom = 158.0
 hint_tooltip = "Quit to Desktop."
 text = "quit"
 
@@ -108,6 +119,7 @@ radial_accel_random = 0.2
 tangential_accel = 24.48
 
 [node name="SettingsDialog" parent="." instance=ExtResource( 3 )]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Missions" to="." method="_on_Missions_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Sandbox" to="." method="_on_Sandbox_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Timelimit" to="." method="_on_Timelimit_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]

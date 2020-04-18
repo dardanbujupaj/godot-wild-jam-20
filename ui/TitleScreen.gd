@@ -14,7 +14,7 @@ func _on_Sandbox_pressed():
 
 
 func _on_Timelimit_pressed():
-	GameService.time_limit = 65
+	GameService.time_limit = 5 * 60
 	GameService.start_game()
 
 func _on_Quit_pressed():
@@ -24,3 +24,7 @@ func _on_Quit_pressed():
 func _on_Settings_pressed():
 	$SettingsDialog.popup_centered()
 	pass # Replace with function body.
+
+
+func _on_Missions_pressed():
+	get_tree().change_scene("res://ui/MissionOverview.tscn")

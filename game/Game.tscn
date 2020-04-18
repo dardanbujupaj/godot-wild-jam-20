@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/cog-solid.svg" type="Texture" id=1]
 [ext_resource path="res://game/ground.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://game/background_1.png" type="Texture" id=20]
 [ext_resource path="res://game/background_3.png" type="Texture" id=21]
 [ext_resource path="res://game/clock.png" type="Texture" id=22]
+[ext_resource path="res://game/sound/DandelionSong_v1.wav" type="AudioStream" id=23]
 
 [sub_resource type="AnimatedTexture" id=1]
 frames = 6
@@ -216,6 +217,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GameOverPopup" type="PopupPanel" parent="UI"]
+pause_mode = 2
+margin_right = 8.0
+margin_bottom = 8.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/GameOverPopup"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 123.0
+margin_bottom = 68.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverPopup/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 109.0
+margin_bottom = 54.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="UI/GameOverPopup/MarginContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/GameOverPopup/MarginContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Back" type="Button" parent="UI/GameOverPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "back"
+
+[node name="Restart" type="Button" parent="UI/GameOverPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+disabled = true
+text = "restart"
+
 [node name="Cloud" parent="." instance=ExtResource( 14 )]
 position = Vector2( 0, -350 )
 
@@ -268,7 +311,6 @@ motion_scale = Vector2( 0.5, 0 )
 
 [node name="background" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
 frames = SubResource( 6 )
-frame = 4
 playing = true
 offset = Vector2( 0, 4 )
 
@@ -281,6 +323,12 @@ shape = SubResource( 7 )
 
 [node name="TimelimitTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+autoplay = true
+
+[node name="SoundEffectPlayer" type="AudioStreamPlayer" parent="."]
 [connection signal="about_to_show" from="UI/OverlayMenu" to="." method="_on_OverlayMenu_about_to_show"]
 [connection signal="popup_hide" from="UI/OverlayMenu" to="." method="_on_OverlayMenu_popup_hide"]
 [connection signal="pressed" from="UI/MarginContainer/Menu" to="." method="_popup_overlay_menu"]
@@ -290,4 +338,6 @@ one_shot = true
 [connection signal="button_down" from="UI/WindRight" to="." method="_on_WindRight_button_down"]
 [connection signal="button_up" from="UI/WindRight" to="." method="_on_Wind_button_up"]
 [connection signal="pressed" from="UI/WindRight" to="." method="_on_WindRight_pressed"]
+[connection signal="pressed" from="UI/GameOverPopup/MarginContainer/VBoxContainer/HBoxContainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="UI/GameOverPopup/MarginContainer/VBoxContainer/HBoxContainer/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="timeout" from="TimelimitTimer" to="." method="_on_TimelimitTimer_timeout"]

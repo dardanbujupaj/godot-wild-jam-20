@@ -1,7 +1,7 @@
 extends Node
 
 
-const GAME_WIDTH = 2800
+const GAME_WIDTH = 2600
 
 
 # Called when the node enters the scene tree for the first time.

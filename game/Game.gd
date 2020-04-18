@@ -13,6 +13,8 @@ var game_mode = MODE_FREE
 
 var game_over = false
 
+var goal_count
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if GameService.time_limit != null:
@@ -20,10 +22,18 @@ func _ready():
 	else:
 		$UI/PanelContainer/VBoxContainer/HBoxTimer.hide()
 	
+	
+	goal_count = GameService.goal_count
+	
 	# place starting dandelions
 	add_dandelion(Vector2(0, 0))
 	
 	GameService.reset()
+
+func restart():
+	print("restart not implemented")
+	pass
+
 
 func _refresh_panel():
 	$UI/PanelContainer.hide()
@@ -60,8 +70,14 @@ func _process(delta):
 
 func check_and_update_stats():
 	# update dandelion counter
-	var dandelion_count = get_tree().get_nodes_in_group("dandelions")
-	$UI/PanelContainer/VBoxContainer/HBoxCounter/DandelionCounter.text = str(len(dandelion_count))
+	var dandelion_count = len(get_tree().get_nodes_in_group("dandelions"))
+	
+	var counter_text = str(dandelion_count)
+	
+	if goal_count != null:
+		counter_text += "/" + str(goal_count)
+	
+	$UI/PanelContainer/VBoxContainer/HBoxCounter/DandelionCounter.text = counter_text 
 	
 	# update timer
 	var time_left = $TimelimitTimer.time_left
@@ -76,6 +92,13 @@ func check_and_update_stats():
 		time_string = "%d:%02d" % [minutes, seconds]
 		
 	$UI/PanelContainer/VBoxContainer/HBoxTimer/Timer.text = time_string
+	
+	
+	if goal_count != null and dandelion_count >= goal_count:
+		end_game(true)
+
+
+
 
 
 # open the overlay menu
@@ -103,11 +126,19 @@ func release_seeds(release_position, amount):
 
 
 
-func end_game():
-	# TODO Gameover
-	#get_tree().paused = true
-	#game_over = true
-	pass
+func end_game(game_won: bool):
+	
+	get_tree().paused = true
+	game_over = true
+	
+	if game_won:
+		$UI/GameOverPopup/MarginContainer/VBoxContainer/Label.text = "You won!"
+	else:
+		$UI/GameOverPopup/MarginContainer/VBoxContainer/Label.text = "You lost!"
+		
+	$UI/GameOverPopup.popup_centered()
+	
+
 
 # pause and unpause game depending ond overlay menu
 func _on_OverlayMenu_about_to_show():
@@ -129,22 +160,43 @@ func _on_WindLeft_pressed():
 	pass# $Cloud.velocity = Vector2(-1, 0)
 
 
-
+func play_wind_sound():
+	var wind_sounds = [
+		preload("res://game/sound/Sound_03_WindBG1.wav"),
+		preload("res://game/sound/Sound_04_WindLN1.wav"),
+		preload("res://game/sound/Sound_05_WindLN2.wav")
+	]
+	$SoundEffectPlayer.stream = wind_sounds[randi() % len(wind_sounds)]
+	$SoundEffectPlayer.play()
 
 func _on_WindRight_button_down():
+	play_wind_sound()
 	$Cloud.accelerate_right()
 	get_tree().call_group("dandelions", "blow_right")
+	get_tree().call_group("seeds", "blow_right")
 	
 func _on_WindLeft_button_down():
+	play_wind_sound()
 	$Cloud.accelerate_left()
 	get_tree().call_group("dandelions", "blow_left")
+	get_tree().call_group("seeds", "blow_left")
 
 
 func _on_Wind_button_up():
 	get_tree().call_group("dandelions", "stop_blowing")
+	get_tree().call_group("seeds", "stop_blowing")
 	$Cloud.stop_accelerating()
 
 
 func _on_TimelimitTimer_timeout():
-	end_game()
+	end_game(false)
 	pass # Replace with function body.
+
+
+func _on_Back_pressed():
+	get_tree().paused = false
+	GameService.back()
+
+
+func _on_Restart_pressed():
+	restart()

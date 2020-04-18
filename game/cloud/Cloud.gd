@@ -81,6 +81,7 @@ func _on_Cloud_input_event(viewport, event, shape_idx):
 		
 		if anger == 5:
 			change_rain_level("catsdogs")
+			$AudioStreamPlayer.play()
 		else:
 			if rain_levels[rain_phase]["increase"] != null:
 				change_rain_level(rain_levels[rain_phase]["increase"])
