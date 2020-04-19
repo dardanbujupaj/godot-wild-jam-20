@@ -69,7 +69,13 @@ func _physics_process(delta):
 	else:
 		velocity *= .97
 		
-	position += velocity * delta
+	
+	
+	var xrange = Constants.GAME_WIDTH / 2
+		
+	if (velocity.x > 0 and position.x < xrange or
+		velocity.x < 0 and position.x > -xrange):
+		position += velocity * delta
 	
 	
 

@@ -422,6 +422,7 @@ cast_to = Vector2( 0, -1000 )
 [node name="leaves" type="AnimatedSprite" parent="."]
 frames = SubResource( 33 )
 animation = "large_halfbrown_right"
+frame = 1
 playing = true
 
 [node name="stem" type="Sprite" parent="."]

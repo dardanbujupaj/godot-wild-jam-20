@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ui/titlescreen/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://game/seed/seed.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ui/titlescreen/GWJ-20-WC-2.png" type="Texture" id=6]
 [ext_resource path="res://ui/titlescreen/GWJ-20-WC-1.png" type="Texture" id=7]
 [ext_resource path="res://ui/titlescreen/Dandelion_Menu_Song1.wav" type="AudioStream" id=8]
+[ext_resource path="res://ui/titlescreen/title.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 83.4772, 111.839 )
@@ -34,22 +35,6 @@ texture = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GWJ-20-WC-1"]
 shape = SubResource( 1 )
 
-[node name="Particles2D" type="CPUParticles2D" parent="."]
-position = Vector2( -27.1092, 444.777 )
-amount = 64
-lifetime = 20.0
-texture = ExtResource( 2 )
-emission_shape = 2
-emission_rect_extents = Vector2( 50, 600 )
-gravity = Vector2( 98, 0 )
-initial_velocity = 100.0
-initial_velocity_random = 1.0
-angular_velocity_random = 1.0
-linear_accel = -6.35
-radial_accel = -100.0
-radial_accel_random = 0.2
-tangential_accel = 24.48
-
 [node name="Flower" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 centered = false
@@ -74,9 +59,30 @@ position = Vector2( 937.651, 693.201 )
 rotation = 0.513068
 text = "Quit"
 
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+position = Vector2( -27.1092, 444.777 )
+z_index = -1
+amount = 64
+lifetime = 20.0
+texture = ExtResource( 2 )
+emission_shape = 2
+emission_rect_extents = Vector2( 50, 600 )
+gravity = Vector2( 98, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 1.0
+angular_velocity_random = 1.0
+linear_accel = -6.35
+radial_accel = -100.0
+radial_accel_random = 0.2
+tangential_accel = 24.48
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
+
+[node name="title" type="Sprite" parent="AudioStreamPlayer"]
+position = Vector2( 440.831, 317.821 )
+texture = ExtResource( 9 )
 [connection signal="mouse_entered" from="GWJ-20-WC-1" to="." method="_on_GWJ20WC1_mouse_entered"]
 [connection signal="pressed" from="Flower/Missions" to="." method="_on_Missions_pressed"]
 [connection signal="pressed" from="Flower/Sandbox" to="." method="_on_Sandbox_pressed"]

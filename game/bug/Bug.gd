@@ -1,4 +1,5 @@
 extends Area2D
+class_name Bug
 
 
 const SPEED = Vector2(0, -1) * 50

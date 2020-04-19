@@ -1,5 +1,6 @@
 extends AnimatedSprite
 
+signal found
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -20,9 +21,11 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("click"):
 		play("popup")
 
-
 func _on_UBoot_animation_finished():
+	if animation == "popup":
+		emit_signal("found")
 	play("hidden")
+	
 
 
 func _on_BubblesTimer_timeout():

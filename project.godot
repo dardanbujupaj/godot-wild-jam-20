@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Bug",
+"language": "GDScript",
+"path": "res://game/bug/Bug.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Cloud",
 "language": "GDScript",
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://game/tutorial/TutorialHint.gd"
 } ]
 _global_script_class_icons={
+"Bug": "",
 "Cloud": "",
 "Dandelion": "",
 "FileFinderDialog": "",

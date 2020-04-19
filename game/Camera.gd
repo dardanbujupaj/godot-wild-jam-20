@@ -19,7 +19,7 @@ func _ready():
 func _process(delta):
 	if follow_node != null: # and not $Tween.is_active():
 		
-		home_position.x = follow_node.position.x
+		set_home_position(Vector2(follow_node.position.x, home_position.y))
 		
 		position += (home_position - position) * 0.05
 	
@@ -51,8 +51,14 @@ func set_home_position(new_position):
 	
 var current_node
 
-func zoom_to(node):
+func zoom_to(node: Area2D):
+	
 	print("zoom to %s" % node)
+	
+	var tutorial = get_tree().get_nodes_in_group("tutorials")[0]
+	tutorial.show_tutorial("dandelion_age")
+	tutorial.show_tutorial("dandelion_rain")
+	tutorial.show_tutorial("dandelion_sun")
 	
 	
 	# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
@@ -71,11 +77,18 @@ func zoom_to(node):
 	node.active = true
 	
 func zoom_out():
+	
+	
+	var tutorial = get_tree().get_nodes_in_group("tutorials")[0]
+	tutorial.show_tutorial("cloud_rain")
+	tutorial.show_tutorial("cloud_move")
+	
 	# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
 	var wr = weakref(current_node)
 	if wr.get_ref() and current_node is Dandelion:
 		# set old node inactive
 		current_node.active = false
+	
 	
 	
 	$Tween.interpolate_property(self, "position", position, home_position, 1, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
@@ -91,7 +104,7 @@ func follow(node):
 	follow_node = node
 	
 	if follow_node != null:
-		home_position.x = follow_node.position.x
+		set_home_position(Vector2(follow_node.position.x, home_position.y))
 		zoom_out()
 		
 		$Tween.remove(self, "position")
@@ -100,4 +113,3 @@ func follow(node):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
