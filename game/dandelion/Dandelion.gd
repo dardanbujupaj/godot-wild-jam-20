@@ -6,6 +6,9 @@ class_name Dandelion
 var sun = 0
 var rain = 0
 
+var rain_oversaturated = false
+var sun_oversaturated = false
+
 const MAX_AGE_LOWER_LIMIT = 30
 const MAX_AGE_UPPER_LIMIT = 120
 
@@ -14,6 +17,7 @@ var max_age = 0
 var age = 0
 
 var size = 1
+
 
 
 var fertilized = false
@@ -26,9 +30,8 @@ var is_blowing_right = false
 var active = false setget set_active
 
 func set_active(new_active):
-	
-	$Rainometer.visible = new_active
-	$Sunometer.visible = new_active
+	$Node2D/Rainometer.visible = new_active
+	$Node2D/Sunometer.visible = new_active
 	
 	active = new_active
 
@@ -40,6 +43,9 @@ func _ready():
 	set_active(false)
 	max_age =  rand_range(MAX_AGE_LOWER_LIMIT, MAX_AGE_UPPER_LIMIT)
 	next_age_countdown = max_age / 4
+	
+	
+	$AudioStreamPlayer2D.play()
 
 
 func _input(event):
@@ -67,11 +73,22 @@ func _process(delta):
 		rain -= delta * 0.5
 	
 	
+	# fill/drain sunometer
+	if collider is Cloud or Shared.night:
+		sun = max(sun - 5 * delta, 0)
+	else:
+		sun = min(sun + 5 * delta, 100)
+	
 	# update progress bars
-	$Rainometer.value = rain
-	$Sunometer.value = rain
+	$Node2D/Rainometer.value = rain
+	$Node2D/Sunometer.value = sun
 	
 	
+	# set oversaturated flag for sun and rain
+	if rain > 75:
+		rain_oversaturated = true
+	if sun > 75:
+		sun_oversaturated = true
 	
 	# calculate grow rate and change size
 	var grow_rate = .2
@@ -116,18 +133,12 @@ func _process(delta):
 
 
 func update_animations():
-	# leaves animation
-	var animation
 	
-	if size > 20:
-		animation = "large_green"
-	else:
-		animation =  "small_green"
-		
-	if is_blowing_left:
-		animation += "_left"
-	elif is_blowing_right:
-		animation += "_right"
+	if $stem.texture != get_stem_texture():
+		$stem.texture = get_stem_texture()
+	
+	# leaves animation
+	var animation = get_leaves_animation()
 		
 	if animation != $leaves.animation:
 		$leaves.play(animation)
@@ -136,14 +147,29 @@ func update_animations():
 			$leaves.frame = randi() % frame_count
 
 
+func get_stem_texture():
+	if rain_oversaturated and sun_oversaturated:
+		return preload("res://game/dandelion/stem_brown.png")
+	elif rain_oversaturated or sun_oversaturated:
+		return preload("res://game/dandelion/stem_halfbrown.png")
+	else:
+		return preload("res://game/dandelion/stem_green.png")
+		
 
 func get_leaves_animation():
 	var animation
 	
 	if size > 20:
-		animation = "large_green"
+		animation = "large_"
 	else:
-		animation =  "small_green"
+		animation =  "small_"
+	
+	if rain_oversaturated and sun_oversaturated:
+		animation += "brown"
+	elif rain_oversaturated or sun_oversaturated:
+		animation += "halfbrown"
+	else:
+		animation += "green"
 		
 	if is_blowing_left:
 		animation += "_left"

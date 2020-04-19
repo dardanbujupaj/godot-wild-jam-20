@@ -1,15 +1,37 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://ui/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://ui/titlescreen/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://game/seed/seed.png" type="Texture" id=2]
 [ext_resource path="res://ui/SettingsDialog.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui/flower.png" type="Texture" id=4]
-[ext_resource path="res://ui/MenuSeed.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/titlescreen/flower.png" type="Texture" id=4]
+[ext_resource path="res://ui/titlescreen/MenuSeed.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/titlescreen/GWJ-20-WC-2.png" type="Texture" id=6]
+[ext_resource path="res://ui/titlescreen/GWJ-20-WC-1.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 83.4772, 111.839 )
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="SettingsDialog" parent="." instance=ExtResource( 3 )]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="eastereggs" type="Sprite" parent="."]
+position = Vector2( 1830, 960 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 7 )
+
+[node name="GWJ-20-WC-1" type="Area2D" parent="."]
+position = Vector2( 1835, 965 )
+
+[node name="pacifist" type="Sprite" parent="GWJ-20-WC-1"]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GWJ-20-WC-1"]
+shape = SubResource( 1 )
 
 [node name="Particles2D" type="CPUParticles2D" parent="."]
 position = Vector2( -27.1092, 444.777 )
@@ -32,24 +54,25 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="Missions" parent="Flower" instance=ExtResource( 5 )]
-position = Vector2( 924.789, 427.744 )
-rotation = -0.943846
-scale = Vector2( 1, 1 )
+position = Vector2( 963.931, 450.964 )
+rotation = -0.500684
 text = "Missions"
 
 [node name="Sandbox" parent="Flower" instance=ExtResource( 5 )]
-position = Vector2( 999.309, 499.167 )
-rotation = -0.542291
+position = Vector2( 1021.2, 534.991 )
+rotation = -0.169649
 text = "Sandbox"
 
 [node name="Settings" parent="Flower" instance=ExtResource( 5 )]
-position = Vector2( 1022.71, 586.336 )
+position = Vector2( 984.232, 643.39 )
+rotation = 0.0948775
 text = "Settings"
 
 [node name="Quit" parent="Flower" instance=ExtResource( 5 )]
-position = Vector2( 986.744, 645.435 )
-rotation = 0.361097
+position = Vector2( 937.651, 693.201 )
+rotation = 0.513068
 text = "Quit"
+[connection signal="mouse_entered" from="GWJ-20-WC-1" to="." method="_on_GWJ20WC1_mouse_entered"]
 [connection signal="pressed" from="Flower/Missions" to="." method="_on_Missions_pressed"]
 [connection signal="pressed" from="Flower/Sandbox" to="." method="_on_Sandbox_pressed"]
 [connection signal="pressed" from="Flower/Settings" to="." method="_on_Settings_pressed"]

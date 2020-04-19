@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stem_half_brown.png-92b7c204a0a31270e635cd520961f2c8.stex"
+path="res://.import/GWJ-20-WC-1.png-d0effa508ac0b030e446cba429372514.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/dandelion/stem_half_brown.png"
-dest_files=[ "res://.import/stem_half_brown.png-92b7c204a0a31270e635cd520961f2c8.stex" ]
+source_file="res://ui/titlescreen/GWJ-20-WC-1.png"
+dest_files=[ "res://.import/GWJ-20-WC-1.png-d0effa508ac0b030e446cba429372514.stex" ]
 
 [params]
 

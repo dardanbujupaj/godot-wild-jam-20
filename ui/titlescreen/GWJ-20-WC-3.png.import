@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Samen gross 1.png-4310924f04b745bf3b2a8a8b8b343ce7.stex"
+path="res://.import/GWJ-20-WC-3.png-b2ab461c7718f4df952e5fd9c7a42cf3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/Samen gross 1.png"
-dest_files=[ "res://.import/Samen gross 1.png-4310924f04b745bf3b2a8a8b8b343ce7.stex" ]
+source_file="res://ui/titlescreen/GWJ-20-WC-3.png"
+dest_files=[ "res://.import/GWJ-20-WC-3.png-b2ab461c7718f4df952e5fd9c7a42cf3.stex" ]
 
 [params]
 

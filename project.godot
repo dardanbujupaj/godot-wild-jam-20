@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="godot-wild-jam-20"
-run/main_scene="res://ui/TitleScreen.tscn"
+run/main_scene="res://ui/titlescreen/TitleScreen.tscn"
 boot_splash/image="res://assets/wildjam_wallpaper.png"
 boot_splash/bg_color=Color( 0.0509804, 0.117647, 0.160784, 1 )
 config/icon="res://assets/icon.png"
@@ -49,6 +49,7 @@ config/icon="res://assets/icon.png"
 Settings="*res://Settings.gd"
 Constants="*res://game/Constants.gd"
 GameService="*res://game/GameService.gd"
+Shared="*res://game/Shared.gd"
 
 [display]
 

@@ -4,7 +4,9 @@ extends PopupPanel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	
+	if OS.get_name() == "HTML5":
+		$MarginContainer/VBoxContainer/Quit.hide()
 
 
 
@@ -21,7 +23,7 @@ func _on_Resume_pressed():
 
 
 func _on_Title_pressed():
-	get_tree().change_scene("res://ui/TitleScreen.tscn")
+	get_tree().change_scene("res://ui/titlescreen/TitleScreen.tscn")
 
 
 func _on_Quit_pressed():

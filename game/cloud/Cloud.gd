@@ -58,6 +58,8 @@ func _ready():
 	_on_RainTimer_timeout()
 	
 	rain_phase = "none"
+	
+	$RainSoundTimer.connect("timeout", self, "trigger_rain_sound")
 
 
 
@@ -81,7 +83,7 @@ func _on_Cloud_input_event(viewport, event, shape_idx):
 		
 		if anger == 5:
 			change_rain_level("catsdogs")
-			$AudioStreamPlayer.play()
+			$ThunderPlayer.play()
 		else:
 			if rain_levels[rain_phase]["increase"] != null:
 				change_rain_level(rain_levels[rain_phase]["increase"])
@@ -130,6 +132,7 @@ func _on_RainTimer_timeout():
 	$RainTimer.start(rand_range(4, 10))
 
 
+ # decrease anger
 func _on_AngerTimer_timeout():
 	if anger > 1:
 		anger -=1
@@ -139,3 +142,11 @@ func _on_AngerTimer_timeout():
 	$AngerTimer.start(rand_range(4, 10))
 
 
+# trigger random raindrop sound depending on rain amount
+func trigger_rain_sound():
+	if get_rain_amount() > randi() % 10:
+		if randi() % 2 == 0:
+			$RainPlayer.stream = preload("res://game/sound/Sound_07_Drop1.wav")
+		else:
+			$RainPlayer.stream = preload("res://game/sound/Sound_09_Drop2.wav")
+		$RainPlayer.play()

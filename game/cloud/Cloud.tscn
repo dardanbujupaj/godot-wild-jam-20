@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/cloud/cloud1_5.png" type="Texture" id=1]
 [ext_resource path="res://game/cloud/cloud1_1.png" type="Texture" id=2]
@@ -12,22 +12,13 @@
 [ext_resource path="res://game/cloud/dog_2.png" type="Texture" id=10]
 [ext_resource path="res://game/cloud/dog_1.png" type="Texture" id=11]
 [ext_resource path="res://game/sound/Sound_02_LightningBK1.wav" type="AudioStream" id=12]
+[ext_resource path="res://game/sound/Sound_07_Drop1.wav" type="AudioStream" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.2684, 33.0911 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "5",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "3",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "4",
@@ -38,9 +29,19 @@ animations = [ {
 "name": "1",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "5",
 "speed": 5.0
 } ]
 
@@ -141,8 +142,15 @@ one_shot = true
 [node name="AngerTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ThunderPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
+
+[node name="RainSoundTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="RainPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
 [connection signal="input_event" from="." to="." method="_on_Cloud_input_event"]
 [connection signal="timeout" from="RainTimer" to="." method="_on_RainTimer_timeout"]
 [connection signal="timeout" from="AngerTimer" to="." method="_on_AngerTimer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/cog-solid.svg" type="Texture" id=1]
 [ext_resource path="res://game/ground.png" type="Texture" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://game/background/Wasser 2.3.png" type="Texture" id=32]
 [ext_resource path="res://game/background/Wasser 2.1.png" type="Texture" id=33]
 [ext_resource path="res://game/background/UBoot.tscn" type="PackedScene" id=34]
+[ext_resource path="res://ui/memo-theme.tres" type="Theme" id=35]
+[ext_resource path="res://game/Stein klein.png" type="Texture" id=36]
 
 [sub_resource type="AnimatedTexture" id=1]
 frames = 6
@@ -82,7 +84,7 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 21 ), ExtResource( 5 ), ExtResource( 20 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 31 ) ],
 "loop": true,
@@ -90,7 +92,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 33 ), ExtResource( 24 ), ExtResource( 32 ), ExtResource( 24 ) ],
 "loop": true,
@@ -98,7 +100,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 1, 1 )
 
 [node name="Game" type="Node2D"]
@@ -248,6 +250,7 @@ __meta__ = {
 pause_mode = 2
 margin_right = 8.0
 margin_bottom = 8.0
+popup_exclusive = true
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/GameOverPopup"]
 margin_left = 4.0
@@ -286,7 +289,73 @@ margin_bottom = 20.0
 disabled = true
 text = "restart"
 
+[node name="Tutorials" type="MarginContainer" parent="UI"]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -146.0
+margin_top = -82.0
+margin_bottom = 82.0
+theme = ExtResource( 35 )
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorials"]
+margin_right = 146.0
+margin_bottom = 164.0
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Tutorials/VBoxContainer"]
+margin_right = 146.0
+margin_bottom = 164.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Tutorials/VBoxContainer/PanelContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 145.0
+margin_bottom = 163.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorials/VBoxContainer/PanelContainer/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 139.0
+margin_bottom = 157.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 134.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+rect_clip_content = false
+text = "Click the wind buttons to move the cloud around.
+
+
+asdfasdf"
+scroll_active = false
+
+[node name="CheckBox" type="CheckBox" parent="UI/Tutorials/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 134.0
+margin_bottom = 128.0
+text = "don't show again"
+
+[node name="Button" type="Button" parent="UI/Tutorials/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 134.0
+margin_bottom = 152.0
+text = "close"
+
 [node name="Cloud" parent="." instance=ExtResource( 14 )]
+pause_mode = 2
 position = Vector2( 0, -350 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -304,9 +373,9 @@ script = ExtResource( 18 )
 curve = SubResource( 5 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CanvasLayer/Sun/Path2D"]
-position = Vector2( -427.883, -227.593 )
+position = Vector2( -4.52025, -451.437 )
 rotation = -1.12533
-offset = 334.471
+offset = 835.376
 rotate = false
 
 [node name="sun" type="Sprite" parent="CanvasLayer/Sun/Path2D/PathFollow2D"]
@@ -343,13 +412,13 @@ playing = true
 offset = Vector2( 0, 4 )
 
 [node name="WaterBottomLayer" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
-frames = SubResource( 8 )
+frames = SubResource( 7 )
 frame = 4
 playing = true
 offset = Vector2( 0, 4 )
 
 [node name="WaterTopLayer" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
-frames = SubResource( 9 )
+frames = SubResource( 8 )
 frame = 1
 playing = true
 offset = Vector2( 0, 4 )
@@ -361,7 +430,7 @@ position = Vector2( -282.099, -232.477 )
 rotation = -0.401704
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionHelper"]
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="TimelimitTimer" type="Timer" parent="."]
 one_shot = true
@@ -371,6 +440,15 @@ stream = ExtResource( 23 )
 autoplay = true
 
 [node name="SoundEffectPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Stone" type="Area2D" parent="."]
+position = Vector2( 260.923, -22.0587 )
+
+[node name="stone_small" type="Sprite" parent="Stone"]
+texture = ExtResource( 36 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stone"]
+polygon = PoolVector2Array( -8.94833, -8.61935, -22.2666, -3.62498, -29.8771, 18.2551, -29.8771, 27.7682, -17.9857, 43.2269, 15.31, 41.8, 27.677, 23.2495, 22.4448, 5.65027, 0.326904, -11.7111 )
 [connection signal="about_to_show" from="UI/OverlayMenu" to="." method="_on_OverlayMenu_about_to_show"]
 [connection signal="popup_hide" from="UI/OverlayMenu" to="." method="_on_OverlayMenu_popup_hide"]
 [connection signal="pressed" from="UI/MarginContainer/Menu" to="." method="_popup_overlay_menu"]

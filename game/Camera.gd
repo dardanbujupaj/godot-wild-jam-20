@@ -41,11 +41,12 @@ func set_home_position(new_position):
 var current_node
 
 func zoom_to(node):
+	print("zoom to %s" % node)
 	
 	
 	# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
 	var wr = weakref(current_node)
-	if wr.get_ref():
+	if wr.get_ref() and current_node is Dandelion:
 		# old node inactive
 		current_node.active = false
 	
@@ -61,8 +62,7 @@ func zoom_to(node):
 func zoom_out():
 	# check weakref, if wr.get_ref() is false, the object is already freed (deleted)
 	var wr = weakref(current_node)
-	if wr.get_ref():
-		print(current_node)
+	if wr.get_ref() and current_node is Dandelion:
 		# set old node inactive
 		current_node.active = false
 	
