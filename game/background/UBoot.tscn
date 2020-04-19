@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://game/background/UBoot.gd" type="Script" id=1]
 [ext_resource path="res://game/background/U-Boot 1.13.png" type="Texture" id=2]
@@ -12,6 +12,31 @@
 [ext_resource path="res://game/background/U-Boot 1.2,6.png" type="Texture" id=10]
 [ext_resource path="res://game/background/U-Boot 1.10.png" type="Texture" id=11]
 [ext_resource path="res://game/background/U-Boot 1.9.png" type="Texture" id=12]
+[ext_resource path="res://game/background/bubbles.png" type="Texture" id=13]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 13 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 13 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 13 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 13 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 13 )
+region = Rect2( 160, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -24,6 +49,11 @@ animations = [ {
 "loop": false,
 "name": "popup",
 "speed": 4.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "bubbles",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -33,12 +63,19 @@ radius = 68.3831
 position = Vector2( 770.242, 139.574 )
 scale = Vector2( 0.98151, 1 )
 frames = SubResource( 1 )
-animation = "hidden"
+animation = "bubbles"
+frame = 5
+playing = true
 script = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
+
+[node name="BubblesTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 [connection signal="animation_finished" from="." to="." method="_on_UBoot_animation_finished"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="timeout" from="BubblesTimer" to="." method="_on_BubblesTimer_timeout"]

@@ -54,6 +54,7 @@ func _input(event):
 	if event is InputEventKey:
 		var key_event = event as InputEventKey
 		if key_event.pressed and not key_event.echo and key_event.scancode == KEY_S:
+			$AudioStreamPlayer2D.play()
 			get_parent().release_seeds(position + $flower.position, 1)
 
 
@@ -114,6 +115,7 @@ func _process(delta):
 	next_age_countdown -= delta
 	
 	if next_age_countdown < 0:
+		$AudioStreamPlayer2D.play()
 		age += 1
 		
 		next_age_countdown = max_age / 4

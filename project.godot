@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Seed",
 "language": "GDScript",
 "path": "res://game/seed/Seed.gd"
+}, {
+"base": "PanelContainer",
+"class": "TutorialHint",
+"language": "GDScript",
+"path": "res://game/tutorial/TutorialHint.gd"
 } ]
 _global_script_class_icons={
 "Cloud": "",
 "Dandelion": "",
 "FileFinderDialog": "",
-"Seed": ""
+"Seed": "",
+"TutorialHint": ""
 }
 
 [application]

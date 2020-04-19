@@ -35,7 +35,7 @@ onready var rain_levels = {
 		"decrease": "mild"
 	},
 	"catsdogs": {
-		"amount": 20,
+		"amount": 50,
 		"particles": [
 			$ParticlesCat1,
 			$ParticlesCat2,

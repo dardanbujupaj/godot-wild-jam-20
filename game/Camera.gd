@@ -8,10 +8,21 @@ var camera_range = Constants.GAME_WIDTH / 2
 # position to get back to when zooming out
 var home_position
 
+var follow_node
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	home_position = position
+
+
+func _process(delta):
+	if follow_node != null: # and not $Tween.is_active():
+		
+		home_position.x = follow_node.position.x
+		
+		position += (home_position - position) * 0.05
+	
 
 func _input(event):
 	var scrollspeed = Settings.get_property("scrollspeed")
@@ -72,6 +83,19 @@ func zoom_out():
 	$Tween.start()
 	
 	current_node = null
+
+
+
+func follow(node):
+	
+	follow_node = node
+	
+	if follow_node != null:
+		home_position.x = follow_node.position.x
+		zoom_out()
+		
+		$Tween.remove(self, "position")
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

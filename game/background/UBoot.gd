@@ -18,10 +18,13 @@ func _ready():
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("click"):
-		print("play")
 		play("popup")
 
 
 func _on_UBoot_animation_finished():
-	if animation == "popup":
-		play("hidden")
+	play("hidden")
+
+
+func _on_BubblesTimer_timeout():
+	if animation != "popup":
+		play("bubbles")

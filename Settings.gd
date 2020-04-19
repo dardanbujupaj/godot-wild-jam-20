@@ -16,12 +16,15 @@ var properties =  {
 		"max": 100,
 		"step": 5,
 	},
-	"coolness": {
-		"type": "number",
-		"default": 100,
-		"min": 1,
-		"max": 100,
-		"step": 1,
+	"reset tutorials": {
+		"not_persistent": true,
+		"type": "button",
+		"pressed": "_reset_tutorials"
+	},
+	"restore settings": {
+		"not_persistent": true,
+		"type": "button",
+		"pressed": "restore_defaults"
 	}
 }
 
@@ -46,10 +49,13 @@ func _enter_tree():
 		node_data = {}
 	#print(node_data)
 	for key in properties.keys():
-		if node_data.has(key):
-			set_property(key, node_data[key])
+		if properties[key].has("not_persistent") and properties[key]["not_persistent"] == true:
+			pass
 		else:
-			set_property(key, properties[key]["default"])
+			if node_data.has(key):
+				set_property(key, node_data[key])
+			else:
+				set_property(key, properties[key]["default"])
 
 
 func _exit_tree():
@@ -59,10 +65,14 @@ func _exit_tree():
 	var save_dict = {}
 	
 	for key in properties.keys():
-		save_dict[key] = properties[key]["value"]
+		if properties[key].has("not_persistent") and properties[key]["not_persistent"] == true:
+			pass
+		else:
+			save_dict[key] = properties[key]["value"]
 	
 	
 	settings_file.store_line(to_json(save_dict))
+
 
 
 func get_property(key):
@@ -88,9 +98,20 @@ func set_property(key, value):
 func restore_defaults():
 	print("restore defaults")
 	for key in properties.keys():
-		set_property(key, properties[key]["default"])
+		if properties[key].has("not_persistent") and properties[key]["not_persistent"] == true:
+			pass
+		else:
+			set_property(key, properties[key]["default"])
 
 func _set_volume(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(value))
+
+# reset all "dont show tutorial" states
+func _reset_tutorials():
 	
+	for tutorials_node in get_tree().get_nodes_in_group("tutorials"):
+		tutorials_node.dont_show_again = []
+		
+	var dir = Directory.new()
+	dir.remove("user://dontshowtutorials.json")
 

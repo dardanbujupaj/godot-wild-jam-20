@@ -174,16 +174,21 @@ func _on_WindRight_button_down():
 	get_tree().call_group("dandelions", "blow_right")
 	get_tree().call_group("seeds", "blow_right")
 	
+	$Camera.follow($Cloud)
+	
 func _on_WindLeft_button_down():
 	play_wind_sound()
 	$Cloud.accelerate_left()
 	get_tree().call_group("dandelions", "blow_left")
 	get_tree().call_group("seeds", "blow_left")
+	
+	$Camera.follow($Cloud)
 
 
 func _on_Wind_button_up():
 	get_tree().call_group("dandelions", "stop_blowing")
 	get_tree().call_group("seeds", "stop_blowing")
+	$Camera.follow(null)
 	$Cloud.stop_accelerating()
 
 

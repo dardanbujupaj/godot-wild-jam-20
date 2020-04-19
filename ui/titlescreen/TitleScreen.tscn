@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/titlescreen/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://game/seed/seed.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/titlescreen/MenuSeed.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/titlescreen/GWJ-20-WC-2.png" type="Texture" id=6]
 [ext_resource path="res://ui/titlescreen/GWJ-20-WC-1.png" type="Texture" id=7]
+[ext_resource path="res://ui/titlescreen/Dandelion_Menu_Song1.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 83.4772, 111.839 )
@@ -72,6 +73,10 @@ text = "Settings"
 position = Vector2( 937.651, 693.201 )
 rotation = 0.513068
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 [connection signal="mouse_entered" from="GWJ-20-WC-1" to="." method="_on_GWJ20WC1_mouse_entered"]
 [connection signal="pressed" from="Flower/Missions" to="." method="_on_Missions_pressed"]
 [connection signal="pressed" from="Flower/Sandbox" to="." method="_on_Sandbox_pressed"]

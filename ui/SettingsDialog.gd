@@ -8,15 +8,17 @@ func _ready():
 	
 	for key in Settings.properties.keys():
 		var dict = Settings.properties[key]
-		var hbox = HBoxContainer.new()
 		
-		var label = Label.new()
-		label.text = key
-		label.rect_min_size.x = 100
 		
-		hbox.add_child(label)
 		
 		if dict["type"] == "number":
+			var hbox = HBoxContainer.new()
+		
+			var label = Label.new()
+			label.text = key
+			label.rect_min_size.x = 100
+			
+			hbox.add_child(label)
 			
 			var slider = HSlider.new()
 			
@@ -31,9 +33,16 @@ func _ready():
 			control_map[key] = slider
 			
 			hbox.add_child(slider)
+			
+			$MarginContainer/VBoxContainer.add_child(hbox)
+		elif dict["type"]:
+			var button = Button.new()
+			button.text = key
+			button.connect("pressed", Settings, dict["pressed"])
+			button.connect("pressed", self, "_load_properties")
+			$MarginContainer/VBoxContainer.add_child(button)
+			
 		
-		
-		$MarginContainer/VBoxContainer.add_child(hbox)
 		
 	$MarginContainer/VBoxContainer.move_child($MarginContainer/VBoxContainer/RestoreDefaults, $MarginContainer/VBoxContainer.get_child_count() - 1)
 	
