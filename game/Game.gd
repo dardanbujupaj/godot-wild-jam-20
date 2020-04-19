@@ -200,3 +200,4 @@ func _on_Back_pressed():
 
 func _on_Restart_pressed():
 	restart()
+

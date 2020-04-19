@@ -1,109 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://game/seed/seed.png" type="Texture" id=2]
 [ext_resource path="res://ui/SettingsDialog.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/flower.png" type="Texture" id=4]
+[ext_resource path="res://ui/MenuSeed.tscn" type="PackedScene" id=5]
 
-[node name="TitleScreen" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="TitleScreen" type="Node2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -68.5
-margin_top = -86.0
-margin_right = 68.5
-margin_bottom = 86.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 130.0
-margin_bottom = 165.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
-margin_right = 123.0
-margin_bottom = 14.0
-text = "godot wild jam #20"
-
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 123.0
-margin_bottom = 22.0
-
-[node name="Missions" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 26.0
-margin_right = 123.0
-margin_bottom = 46.0
-hint_tooltip = "No goals, no stress.
-Just play and enjoy."
-text = "missions"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sandbox" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 50.0
-margin_right = 123.0
-margin_bottom = 70.0
-hint_tooltip = "No goals, no stress.
-Just play and enjoy."
-text = "sandbox"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Timelimit" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 74.0
-margin_right = 123.0
-margin_bottom = 94.0
-hint_tooltip = "How many dandelions can you plant within the timelimit?"
-text = "timelimit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer"]
-margin_top = 98.0
-margin_right = 123.0
-margin_bottom = 102.0
-
-[node name="Settings" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 106.0
-margin_right = 123.0
-margin_bottom = 126.0
-hint_tooltip = "Game settings and advanced options."
-text = "settings"
-
-[node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer"]
-margin_top = 130.0
-margin_right = 123.0
-margin_bottom = 134.0
-
-[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 138.0
-margin_right = 123.0
-margin_bottom = 158.0
-hint_tooltip = "Quit to Desktop."
-text = "quit"
+[node name="SettingsDialog" parent="." instance=ExtResource( 3 )]
 
 [node name="Particles2D" type="CPUParticles2D" parent="."]
 position = Vector2( -27.1092, 444.777 )
-z_index = -1
 amount = 64
 lifetime = 20.0
 texture = ExtResource( 2 )
@@ -118,9 +27,30 @@ radial_accel = -100.0
 radial_accel_random = 0.2
 tangential_accel = 24.48
 
-[node name="SettingsDialog" parent="." instance=ExtResource( 3 )]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Missions" to="." method="_on_Missions_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Sandbox" to="." method="_on_Sandbox_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Timelimit" to="." method="_on_Timelimit_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[node name="Flower" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Missions" parent="Flower" instance=ExtResource( 5 )]
+position = Vector2( 924.789, 427.744 )
+rotation = -0.943846
+scale = Vector2( 1, 1 )
+text = "Missions"
+
+[node name="Sandbox" parent="Flower" instance=ExtResource( 5 )]
+position = Vector2( 999.309, 499.167 )
+rotation = -0.542291
+text = "Sandbox"
+
+[node name="Settings" parent="Flower" instance=ExtResource( 5 )]
+position = Vector2( 1022.71, 586.336 )
+text = "Settings"
+
+[node name="Quit" parent="Flower" instance=ExtResource( 5 )]
+position = Vector2( 986.744, 645.435 )
+rotation = 0.361097
+text = "Quit"
+[connection signal="pressed" from="Flower/Missions" to="." method="_on_Missions_pressed"]
+[connection signal="pressed" from="Flower/Sandbox" to="." method="_on_Sandbox_pressed"]
+[connection signal="pressed" from="Flower/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Flower/Quit" to="." method="_on_Quit_pressed"]

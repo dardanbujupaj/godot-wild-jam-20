@@ -28,7 +28,7 @@ var active = false setget set_active
 func set_active(new_active):
 	
 	$Rainometer.visible = new_active
-	$Sunometer.visible = false #new_active
+	$Sunometer.visible = new_active
 	
 	active = new_active
 
@@ -69,7 +69,7 @@ func _process(delta):
 	
 	# update progress bars
 	$Rainometer.value = rain
-	$Sunometer.value = sun
+	$Sunometer.value = rain
 	
 	
 	
