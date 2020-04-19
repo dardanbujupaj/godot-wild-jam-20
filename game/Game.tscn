@@ -346,7 +346,7 @@ script = ExtResource( 18 )
 curve = SubResource( 5 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CanvasLayer/Sun/Path2D"]
-position = Vector2( -4.52025, -451.437 )
+position = Vector2( -4.52068, -451.437 )
 rotation = -1.12533
 offset = 835.376
 rotate = false
@@ -400,14 +400,13 @@ __meta__ = {
 
 [node name="WaterBottomLayer" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
 frames = SubResource( 7 )
-frame = 2
+frame = 5
 playing = true
 offset = Vector2( 0, 4 )
 
 [node name="WaterTopLayer" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( -1.78174, 0 )
 frames = SubResource( 8 )
-frame = 2
 playing = true
 offset = Vector2( 0, 4 )
 

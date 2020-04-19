@@ -110,6 +110,3 @@ func follow(node):
 		$Tween.remove(self, "position")
 	
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

@@ -45,7 +45,6 @@ func _ready():
 	add_dandelion(Vector2(0, 0))
 	
 	
-	GameService.reset()
 	
 	if GameService.bug:
 		var instance = preload("res://game/bug/Bug.tscn").instance()
@@ -56,6 +55,9 @@ func _ready():
 		var instance = preload("res://game/bug/Bee.tscn").instance()
 		instance.position = Vector2(400, -400)
 		add_child(instance)
+		
+		
+	GameService.reset()
 	
 	
 	
